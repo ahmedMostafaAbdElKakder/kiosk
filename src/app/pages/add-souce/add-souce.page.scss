@@ -1,0 +1,137 @@
+ion-content{
+    --background: #fff;
+    --color: #000
+}
+ion-button {
+  --background: #ff6e0d;
+  --color: #fff; 
+  text-transform: none;
+}
+img {
+  width: 17%;
+
+}
+.cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: rgb(255 255 255 / 79%);;
+    text-align: center;
+    color: #000
+  }
+  .cover h1 {
+      font-weight: bold;
+      margin-top: 10%;
+      font-size: 7vw
+  }
+  .imgProduct{
+    height: 20vh;
+    width: 50%;
+  }
+
+  .back {
+    text-align: right;
+    text-transform: none;
+    margin-top: 5px;
+  }
+  .back ion-button{
+    --padding-start: 2em;
+    --padding-end: 2em;
+    --border-radius:5px;
+    margin-top: 5%;
+    font-size: 5vw;
+    height: 100px;
+
+    margin-bottom:3%
+  }
+  .order{
+      display: flex;
+      justify-content: space-between;
+  }
+  .orderName{
+      display: flex
+  }
+  .orderName p {
+      margin-left: 5px;
+      font-size: 5vw
+  }
+  .order .parg{
+    font-size: 5vw
+  }
+  .addSouce {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px
+  }
+
+  .addSouce ion-button {
+      --background: #ff6e0d;
+      color: #000;
+      height: 135px;
+      font-size: 5vw
+  }
+  .count {
+    background: gainsboro;
+    width: 15%;
+    height: 135px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    margin-top: 3px;
+    font-size: 5vw;
+  }
+  .count p {
+      margin: 0;
+  }
+  .extra{
+    margin-top: 6px;
+    font-size:5vw;
+  }
+  .extra span {
+    font-size: 4vw;
+    color: gray;
+  }
+  .fotter {
+      position: absolute;
+      bottom: 0 ;
+      width: 100%
+  }
+  .fotter div {
+    display: flex;
+    justify-content: space-around
+  }
+  .fotter ion-button{
+    width: 39%;
+    height: 138px;
+    font-size: 4vw;
+  }
+  h5 {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    font-size: 7vw;
+
+  }
+  @media only screen and (max-width:768px){
+    .products img{
+      height: 74px;
+    }
+    .menuItem img{
+      height: 74px;
+    }
+    .fotter ion-button{
+      height: 44px;
+    }
+    .back ion-button{
+      margin-bottom: 0;
+      height: 36px;
+      margin-top: 0;
+    }
+    .addSouce ion-button{
+      height: 43px;
+    }
+    .count{
+      height:43px;
+    }
+  }

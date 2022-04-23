@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+    <div class="back">
+        <ion-button (click)="goBack()">{{Back}}</ion-button>
+    </div>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true" style="--background: #fff">
+    <div class="logo">
+      <ion-img class="logoImage" src="assets/images/DunkinLogo.png"></ion-img>
+    </div>
+    <div class="title">
+      <h1>{{selectPayment}}</h1>
+    </div>
+  
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col offset="1" size="5">
+            <div class="product" (click)="pay()">
+              <ion-img class="imgProduct"  src="assets/images/Casher.png"></ion-img>
+              <ion-button class="button">{{Counter}}</ion-button>
+            </div>
+          </ion-col>
+          <ion-col size="5">
+              <div class="product" (click)="pay()">
+                <ion-img class="imgProduct" src="assets/images/pos.png"></ion-img>
+                <ion-button class="button">{{Here}}</ion-button>
+              </div>
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>  
+  </ion-content>

@@ -1,0 +1,43 @@
+<ion-header>
+  <div style="background:#ff6e0d ;text-align: center">
+    <img class="imgProduct" src="assets/images/logoWhite.png">
+  </div>
+  <div class="cover">
+    <h1>{{prdouctName}}</h1>
+  </div>
+</ion-header>
+
+<ion-content [dir]="dir">
+  <div class="back">
+    <ion-button (click)="goBack()">{{Back}}</ion-button>
+  </div>
+  <section class="ion-padding-start ion-padding-end">
+    <div class="order">
+      <div class="orderName">
+        <img src="{{productImage}}">
+        <p>{{prdouctName}}</p>
+      </div>
+      <p class="parg">LE.{{productPrice}}</p>
+    </div>
+    
+    <h5> {{ingrdtiont}}</h5>
+
+    <div class="addSouce" *ngFor="let item of arrOfSouces">
+      <ion-button (click)="plus(item)">+</ion-button>
+      <ion-button (click)="minus(item)">-</ion-button>
+      <div class="count">
+        <p>{{item.count}}</p>
+      </div>
+      <p class="extra">{{item.Name}}<br>
+        <span>LE.{{item.Price}}</span>
+      </p>
+      <img src="{{item.Image}}">
+    </div>   
+  </section>
+  <div class="fotter">
+      <div>
+          <ion-button (click)="goBack()">{{Cancel}}</ion-button>
+          <ion-button (click)="goCheckOut()">{{addChange}}</ion-button>
+      </div>
+    </div>
+</ion-content>

@@ -1,0 +1,91 @@
+ion-content{
+  --background: #212121;
+}
+ion-button {
+  --background: #ff6e0d;
+  --color: black; 
+  text-transform: none;
+}
+.header-md::after{
+  background: none !important
+}
+  .back {
+    text-align: right;
+    text-transform: none
+  }
+  .back ion-button{
+    --padding-start: 2em;
+    --padding-end: 2em;
+    --border-radius:5px;
+    margin-top: 5%;
+    font-size: 5vw;
+    height: 84px;
+    margin-bottom:3%
+  }
+  .logo{
+    display: flex;
+    margin-top: 20%;
+    justify-content: center
+  }
+  .logo .logoImage {
+    width: 50%;
+    border-radius: 10px
+  }
+  
+  .title{
+    text-align: center;
+    font-size: 5vw
+  }
+  .title h1 {
+    font-size: 5vw;
+    color: #ff6e0d
+  }
+  .product{
+    border: 10px solid #e6e3e3;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    height:33vh;
+    background: #ff6e0d;
+  
+  }
+  .product .imgProduct{
+    width: 100%;
+    height: 50% !important;
+    margin: 30px auto;
+  }
+  .product .button{
+    --background:#fff; 
+    text-transform: none;
+    height: 112px;
+    font-size: 4vw;
+  }
+  
+  .footer{
+    text-align: center;
+    // display: flex;
+    // justify-content:space-around;
+    margin-top: 10%;
+  }
+  .footer .button{
+    margin-right: 20px;
+    margin-left: 10px;
+    text-transform: none;
+    font-size: 15px;
+  
+    // text-align: center
+  }
+  .footer .lang{
+    background: gray;
+    margin-right: 12px;
+  }
+  @media only screen and (max-width:768px){
+    .back ion-button{
+      margin-bottom: 0;
+      height: 36px;
+      margin-top: 0;
+    }
+    .product{
+      height: 35vh;
+    }
+  }

@@ -1,0 +1,79 @@
+<ion-header>
+  <div style="background:#ff6e0d ;text-align: center">
+    <img class="imgProduct" src="assets/images/logoWhite.png">
+  </div>
+  <div class="cover">
+    <h1>{{nameOfCat}}</h1>
+  </div>
+</ion-header>
+
+<ion-content [dir]="dir">
+  <div class="">
+    <div class="back ion-padding-start">
+      <p>{{Menu}}</p>
+      <ion-button (click)="goBack()">{{Back}}</ion-button>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="menu" [ngClass]="{'ifClick':showModfire}" size="3" style="margin-top: -20px">
+          <div>
+            <div *ngFor="let item of categoris" class="menuItem" (click)="ChoseCategori(item)">
+              <img src="{{item.Image}}">
+              <p>{{item.Name}}</p>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="products" [ngClass]="{'ifClick':showModfire}">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6" class="rowOne" (click)="GetModifiresbyProductId(item,item.Id)"
+                  [ngClass]="{'colOne':item.status == false}" *ngFor="let item of items ; let i = index">
+                  <span class="price_name">LE.{{item.Price}}</span>
+                  <img src="{{item.Image}}">
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div [ngClass]="{'cover2':showModfire}"></div>
+  </div>
+  
+
+  <section class="recmoended" *ngIf="showModfire">
+    <div class="Modfires">
+      <h1>{{Modfires}}</h1>
+      <ion-button (click)="close()">{{Back}}</ion-button>
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col (click)="gotToDetails(item)" *ngFor="let item of ModifiresbyProductId ; let i = index" size="3">
+          <p class="price">LE.{{item.Price}}</p>
+          <img src="{{item.Image}}">
+          <p class="name">{{item.Name}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button class="next" (click)="gotToDetails('normal')">Next</ion-button>
+  </section>
+
+  <section class="footer">
+    <div class="myOrder">
+      <h4>{{MyOrder}}</h4>
+    </div>
+    <div class="foter">
+      <p>{{arrOfModLength}}</p>
+      <div class="confirmOrCancel">
+        <ion-button [disabled]="arrOfModLength" (click)="Done()">{{OrderDone}}</ion-button>
+        <ion-button [disabled]="arrOfModLength" (click)="cancelOrder()">{{Cancel}}</ion-button>
+      </div>
+    </div>
+  </section>
+
+
+
+
+</ion-content>

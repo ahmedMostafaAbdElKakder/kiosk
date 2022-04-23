@@ -1,0 +1,64 @@
+<ion-header>
+  <div style="background:#ff6e0d ;text-align: center">
+    <img class="imgProduct" src="assets/images/logoWhite.png">
+  </div>
+  <div class="cover">
+    <h1>{{nameOfItem}}</h1>
+  </div>
+</ion-header>
+
+<ion-content [dir]="dir">
+  <div class="back">
+    <ion-button (click)="goBack()">{{Back}}</ion-button>
+  </div>
+
+  <section class="order ion-padding-start ion-padding-end">
+    <div class="orderInfo">
+      <img src="{{image}}">
+      <div>
+        <p>{{nameOfItem}}</p>
+        <p>{{edit}}</p>
+        <span>LE.{{itemPrice}}</span>
+      </div>
+    </div>
+    <div>
+      <ion-button class="cistomiz" (click)="goBack()">{{Customized}}</ion-button>
+    </div>
+
+  </section>
+  <div *ngIf="item.ingridtArr.length != 0" class="ExtraName  ion-padding-start ion-padding-end">
+    <div class="order">
+      <p>( {{ingedtiont}} ) : {{souceCount}} {{souceName}}</p>
+      <p>{{Price}}  LE.{{soucePrice}}</p>
+    </div>
+    <hr>
+  </div>
+  <div *ngIf="showOrHideMod" class="order ExtraName  ion-padding-start ion-padding-end">
+      <p>( {{modfieres}} ) : {{modfireName}}</p>
+      <p>{{price}} : LE.{{modfirePrice}}</p>
+    </div>
+  <div class="ion-padding-start ion-padding-end">
+    <hr>
+  </div>
+
+  <div class="quantity">
+    <p>
+      {{Quantity}}
+    </p>
+    <div class="plus">
+      <div>
+        <ion-button (click)="minus()">-</ion-button>
+        <div class="count">
+          <p>{{count}}</p>
+        </div>
+        <ion-button (click)="plus()">+</ion-button>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div>
+      <ion-button (click)="cancelOrder()">{{Cancel}}</ion-button>
+      <ion-button (click)="gotoMenu()">{{addChange}}</ion-button>
+    </div>
+  </div>
+</ion-content>

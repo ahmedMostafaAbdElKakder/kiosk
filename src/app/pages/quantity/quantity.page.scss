@@ -1,0 +1,151 @@
+ion-content{
+  --background:#fff ;
+  --color: black
+}
+ion-button {
+  --background: #ff6e0d;
+  --color: #fff; 
+  text-transform: none;
+}
+.imgProduct{
+  height: 20vh;
+  width: 50%;
+}
+
+  .cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: rgb(255 255 255 / 79%);;
+    text-align: center;
+    color: #000
+  }
+  .cover h1 {
+      font-weight: bold;
+      margin-top: 10%;
+      font-size: 7vw
+  }
+  .back {
+    text-align: right;
+    text-transform: none;
+    margin-top: 5px;
+  }
+  .back ion-button{
+    --padding-start: 2em;
+    --padding-end: 2em;
+    --border-radius:5px;
+    margin-top: 5%;
+    font-size: 5vw;
+    height: 84px;
+    margin-bottom:3%
+  }
+  .order{
+      display: flex;
+      justify-content:space-between;
+  }
+  .order .orderInfo {
+      display: flex;
+  }
+  .orderInfo img {
+      width: 25%;
+      margin-right: 10px;
+      margin-left: 10px;
+
+  }
+  .orderInfo p {
+      font-size: 3vw;
+  }
+  .orderInfo span{
+    font-size: 3vw;
+  }
+  .ExtraName p {
+    font-size: 4vw;
+
+  }
+  hr{
+      background: #ccc9c9
+  }
+
+  .quantity{
+      text-align: center
+  }
+  .quantity p {
+    font-size: 5vw
+  }
+  .plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .plus ion-button{
+      --background: #ff6e0d;
+      color: #000;
+      font-size: 5vw;
+      height: 113px;
+  }
+  .plus div{
+      display: flex;
+  }
+  .count {
+      justify-content: center;
+      align-items: center
+  }
+  .count p {
+    background: gainsboro;
+    padding: 24px 72px;
+    border-radius: 5px;
+    margin: 0 15px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 5px;
+    width: 100%
+  }
+  .footer div {
+    display: flex;
+    justify-content: space-around
+  }
+  .footer ion-button{
+    width: 35%;
+    font-size: 4vw;
+    height: 120px;
+
+  }
+  .cistomiz {
+    --background: #000 ; color: #fff ;font-size:4vw;height: 91px;
+  }
+  @media only screen and (max-width:768px){
+    .products img{
+      height: 74px;
+    }
+    .menuItem img{
+      height: 74px;
+    }
+    .footer ion-button{
+      height: 44px;
+    }
+    .back ion-button{
+      margin-bottom: 0;
+      height: 36px;
+      margin-top: 0;
+    }
+    .addSouce ion-button{
+      height: 43px;
+    }
+    // .count{
+    //   height:43px;
+    // }
+    .cistomiz {
+      height: 45px;
+    }
+    .plus ion-button{
+      height: 40px;
+    }
+    .count p {
+      padding: 12px 59px;
+    }
+    .orderInfo p {
+      font-size: 2.5vw;
+    }
+  }

@@ -1,0 +1,121 @@
+ion-content{
+  --background: #fff;
+}
+ion-button {
+  --background: #ff6e0d;
+  --color: #fff; 
+  text-transform: none;
+}
+.header-md::after{
+  background: none !important
+}
+  .back {
+    text-align: right;
+    text-transform: none;
+  }
+  .back ion-button{
+    --padding-start: 2em;
+    --padding-end: 2em;
+    --border-radius:5px;
+    margin-top: 5%;
+    font-size: 5vw;
+    height: 84px;
+    margin-bottom:3%
+  }
+  .logo{
+    margin-top: 20%;
+    display: flex;
+    justify-content: center
+  }
+  .logo .logoImage {
+    width: 50%;
+    border-radius: 10px
+  }
+  .title{
+    text-align: center;
+  }
+  hr {
+    background: #9c9c9c;
+    margin: 0;
+  }
+  .containerOfShaping{
+    background: #e2dcdc;
+    margin: 0 10px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #000;
+  }
+  .nameAndPrice , .editOrRemove{
+    display: flex;
+    justify-content: space-between;
+  }
+  .nameAndPrice p {
+    font-size: 5vw
+  }
+  .editOrRemove{
+    margin-top: 12px;
+  }
+  .editOrRemove ion-button{
+      --background: #000000;
+      color: #fff;
+      height: 112px;
+      font-size: 4vw;
+  }
+  .plusAndMuins {
+      display: flex;
+  }
+  .plusAndMuins p {
+    background: #b4b1b1;
+    margin: 0 10px;
+    width: 100px;
+    text-align: center;
+    padding-top: 12px;
+    height: 95px;
+    font-size: 4vw;
+  }
+  .plusAndMuins ion-button{
+      --background: #ff6e0d;
+      color: #000;
+      height: 95px;
+  }
+
+
+  .fotter{
+      position: absolute;
+      bottom: 0;
+      text-align: right;
+      width: 100%;
+      padding: 0 5px
+  }
+  .fotter div {
+      display: flex;
+      justify-content: space-between
+  }
+
+  .containerPrdouct{
+  height: 43vh;
+  overflow-y: scroll;
+  }
+  .ion-foter ion-button{
+    font-size: 3vw;
+    height: 111px;
+  }
+  @media only screen and (max-width:768px){
+    .back ion-button{
+      margin-bottom: 0;
+      height: 36px;
+      margin-top: 0;
+    }
+    .editOrRemove ion-button{
+      height: 45px;
+    }
+    .plusAndMuins ion-button{
+      height: 43px;
+    }
+    .plusAndMuins p {
+      height: 45px;
+    }
+    .ion-foter ion-button{
+      height: 45px;
+    }
+  }

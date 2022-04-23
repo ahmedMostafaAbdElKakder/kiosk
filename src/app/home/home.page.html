@@ -1,0 +1,45 @@
+<!-- <ion-header [translucent]="true">
+  <div class="back">
+      <ion-button>Back</ion-button>
+  </div>
+</ion-header> -->
+
+<ion-content [fullscreen]="true" style="--background: #fff">
+  <div class="logo">
+    <ion-img class="logoImage" src="assets/images/DunkinLogo.png"></ion-img>
+  </div>
+  <div class="title">
+    <h1>Where Will you be Eating Today</h1>
+  </div>
+
+  <div style="margin-top: 5%;">
+    <ion-grid>
+      <ion-row>
+        <ion-col offset="1" size="5" (click)="gotToShop()">
+          <div class="product">
+            <img class="imgProduct"  src="assets/images/coffeeInShop.png">
+            <ion-button class="button">In Shop</ion-button>
+          </div>
+        </ion-col>
+        <ion-col size="5" (click)="gotToShop()">
+            <div class="product">
+              <img class="imgProduct"src="assets/images/takeOut.png">
+              <ion-button class="button">Take Out</ion-button>
+            </div>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="footer">
+      <ion-button (click)="changeLang('2')" class="button" [ngClass]="{'changeLang' : lang == '2'}">
+        <span class="lang">EN</span>
+        <span>English</span> 
+      </ion-button>
+      <ion-button (click)="changeLang('1')" class="button" [ngClass]="{'changeLang' : lang == '1'}">
+        <span class="lang">AR</span>
+        <span>عربي</span>
+        </ion-button>
+  </div>
+
+</ion-content>

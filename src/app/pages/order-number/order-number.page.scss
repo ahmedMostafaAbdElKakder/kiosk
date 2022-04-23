@@ -1,0 +1,62 @@
+ion-content{
+  --background: #212121;
+}
+ion-button {
+  --background: #ff6e0d;
+  --color: black; 
+  text-transform: none;
+}
+  .back {
+    text-align: right;
+    text-transform: none
+  }
+  .logo{
+    display: flex;
+    margin-top: 20%;
+    justify-content: center
+  }
+  .logo .logoImage {
+    width: 60%;
+    border-radius: 10px
+  }
+  
+  .title{
+    text-align: center;
+    font-size: 5vw;
+  }
+  .product{
+    border: 10px solid #fff;
+    height: 170px;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+  }
+  .product .imgProduct{
+    width: 50%;
+    margin: 30px auto;
+    height: 50px;
+  }
+  .product .button{
+    --background:#ffc107; 
+    text-transform: none
+  }
+ 
+  .fotter{
+    position: absolute;
+    bottom: 5px;
+    left: 34.5%;
+    width: 100%;
+  }
+  .fotter ion-button{
+    width: 34%;
+    font-size: 5vw;
+    height: 112px;
+    color: #fff
+
+  }
+
+  @media only screen and (max-width:768px){
+    .fotter ion-button{
+      height: 45px;
+    }
+  }

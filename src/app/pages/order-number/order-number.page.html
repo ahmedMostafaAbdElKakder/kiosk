@@ -1,0 +1,13 @@
+<ion-content [fullscreen]="true" style="--background: #fff">
+  <div class="logo">
+    <ion-img class="logoImage" src="assets/images/DunkinLogo.png"></ion-img>
+  </div>
+  <div class="title">
+    <p style="color: #ff6e0d ; font-weight: bold">{{title}}</p>
+    <h1 style="color: #ff6e0d ; font-size: 5vw ; font-weight: bold">{{orderNumber}}</h1>
+  </div>
+  
+  <div class="fotter">
+    <ion-button (click)="Done()">{{OrderDone}}</ion-button>
+  </div>
+</ion-content>

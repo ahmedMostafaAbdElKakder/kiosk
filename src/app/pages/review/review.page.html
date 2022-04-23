@@ -1,0 +1,51 @@
+<ion-header>
+  <div class="back" style="background:#fff">
+    <ion-button (click)="goBack()">{{Back}}</ion-button>
+  </div>
+</ion-header>
+
+<ion-content [dir]="dir">
+  <div class="logo">
+    <ion-img class="logoImage" src="assets/images/DunkinLogo.png"></ion-img>
+  </div>
+  <div class="title">
+    <p style="color: #ff6e0d ; font-size: 5vw">{{reviewMyOrder}}</p>
+  </div>
+
+  <div class="containerPrdouct">
+    <div class="containerOfShaping" style="margin-top: 5%;" *ngFor="let product of item ; let i = index">
+      <div class="nameAndPrice">
+        <p>({{product.Prdoucts[0].count}}) {{product.Prdoucts[0].Name}}</p>
+        <p>LE.{{product.Prdoucts[0].Price * product.Prdoucts[0].count}}</p>
+      </div>
+      <hr>
+      <div class="nameAndPrice" *ngIf="product.ingridtArr.length ">
+        <p> ({{product.ingridtArr[0].count}}) {{product.ingridtArr[0].Name}}</p>
+        <p>LE.{{product.ingridtArr[0].Price * product.ingridtArr[0].count}}</p>
+      </div>
+      <hr>
+      <div class="nameAndPrice" *ngIf="product.ifMode == false">
+        <p>({{product.count}}) {{product.Name}}</p>
+        <p>LE.{{product.Price * product.count}}</p>
+      </div>
+      <div class="editOrRemove">
+        <ion-button (click)="removeItem(i,product)">{{Remove}}</ion-button>
+        <div class="plusAndMuins">
+          <ion-button (click)="minus(product)">-</ion-button>
+          <p>{{product.Prdoucts[0].count}}</p>
+          <ion-button (click)="plus(product)">+</ion-button>
+        </div>
+        <!-- <ion-button (click)="edit(product.Id)">{{Edit}}</ion-button> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="fotter">
+    <p style="color: #ff6e0d ; font-size: 4vw ; font-weight: bold">{{Total}}
+      LE.{{totalPrice}}</p>
+    <div class="ion-foter">
+      <ion-button (click)="cancel()">{{Cancel}}</ion-button>
+      <ion-button [disabled]="!shwoProced" (click)="goToCheckOut()">{{CheckOut}}</ion-button>
+    </div>
+  </div>
+</ion-content>
