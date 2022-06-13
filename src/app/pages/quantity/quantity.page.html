@@ -17,11 +17,11 @@
       <img src="{{image}}">
       <div>
         <p>{{nameOfItem}}</p>
-        <p>{{edit}}</p>
+        <p *ngIf="item.ingridtArr.length != 0">{{edit}}</p>
         <span>LE.{{itemPrice}}</span>
       </div>
     </div>
-    <div>
+    <div *ngIf="item.ingridtArr.length != 0">
       <ion-button class="cistomiz" (click)="goBack()">{{Customized}}</ion-button>
     </div>
 
@@ -33,7 +33,7 @@
     </div>
     <hr>
   </div>
-  <div *ngIf="showOrHideMod" class="order ExtraName  ion-padding-start ion-padding-end">
+  <div *ngIf="item.Modfire.length != 0" class="order ExtraName  ion-padding-start ion-padding-end">
       <p>( {{modfieres}} ) : {{modfireName}}</p>
       <p>{{price}} : LE.{{modfirePrice}}</p>
     </div>

@@ -31,6 +31,7 @@
                   [ngClass]="{'colOne':item.status == false}" *ngFor="let item of items ; let i = index">
                   <span class="price_name">LE.{{item.Price}}</span>
                   <img src="{{item.Image}}">
+                  <p class="price_name">{{item.Name}}</p>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -57,7 +58,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button class="next" (click)="gotToDetails('normal')">Next</ion-button>
+    <ion-button class="next" (click)="gotToDetails('normal')">{{Next}}</ion-button>
   </section>
 
   <section class="footer">

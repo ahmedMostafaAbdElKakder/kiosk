@@ -64,6 +64,7 @@ ion-button {
   margin-left: 14px;
   text-transform: none;
   font-size: 5vw;
+  height: 100px;
 }
 .footer .lang{
   background: #fff;
@@ -75,8 +76,11 @@ ion-button {
   --background: #ff6e0d;
 }
 
-// @media only screen and (max-width:768px){
-//   .product{
-//     height: 33vh;
-//   }
-// }
+@media only screen and (max-width:768px){
+  .product{
+    height: 33vh;
+  }
+  .footer .button{ 
+    height: 35px;
+  }
+}

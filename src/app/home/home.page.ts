@@ -17,14 +17,14 @@ export class HomePage implements OnInit {
     lang = '2'
   ngOnInit(){
     sessionStorage.setItem("lang" , this.lang)
-    this.getItemById()
+    // this.getItemById()
   }
 
-  getItemById(){
-    this.rest.GetItemsbyProductId().subscribe(res => {
-      console.log("by id " , res)
-    })
-  }
+  // getItemById(){
+  //   this.rest.GetItemsbyProductId(this.lang).subscribe(res => {
+  //     console.log("by id " , res)
+  //   })
+  // }
 
   gotToShop(){
     this.route.navigateByUrl('/main_menu')

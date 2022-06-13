@@ -60,7 +60,7 @@ export class MainMenuPage implements OnInit {
   }
 
   getCategoris() {
-    this.rest.getCategoriWithProduct().subscribe((res: any) => {
+    this.rest.getCategoriWithProduct(this.langId).subscribe((res: any) => {
       console.log(res)
       this.categoris = res
       for (let i = 0; i < this.categoris.length; i++) {
@@ -82,7 +82,11 @@ export class MainMenuPage implements OnInit {
 
     if(arrOfMod){
       this.disalbedButton = false
-      this.arrOfModLength = "Total Items"  + " " + `(${arrOfMod.length})`
+      if(this.langId == '1'){
+        this.arrOfModLength = "إجمالي المنتجات"  + " " + `(${arrOfMod.length})`
+      }else {
+        this.arrOfModLength = "Total Items"  + " " + `(${arrOfMod.length})`
+      }
     }else{
       this.disalbedButton = true
       if(this.langId == '1'){

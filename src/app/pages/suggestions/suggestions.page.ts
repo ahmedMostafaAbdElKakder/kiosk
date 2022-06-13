@@ -35,7 +35,7 @@ export class SuggestionsPage implements OnInit {
   }
 
   getMostSelling() {
-    this.rest.mostSelling().subscribe((res: any) => {
+    this.rest.mostSelling(this.langId).subscribe((res: any) => {
       console.log(res)
       this.mostSellingArr = res
       for (let i = 0; i < this.mostSellingArr.length; i++) {

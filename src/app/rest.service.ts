@@ -14,26 +14,24 @@ export class RestService {
   status = 'true'
   langId
   constructor(private http: HttpClient) { 
-    this.langId = sessionStorage.getItem('lang')
   }
 
 
-  getCategoriWithProduct(){
-    return this.http.get(`${environment.baseUrl}/api/Products/GetCategorieswithProduct?branchId=3&langId=${this.langId}`)
+  getCategoriWithProduct(langId){
+    return this.http.get(`${environment.baseUrl}/api/Products/GetCategorieswithProduct?branchId=3&langId=${langId}`)
   }
 
-  GetItemsbyProductId(){
-    return this.http.get(`${environment.baseUrl}/api/Products/GetItemsbyProductId?prodId=2&langId=${this.langId}`)
+  GetItemsbyProductId(langId,id){
+    return this.http.get(`${environment.baseUrl}/api/Products/GetItemsbyProductId?prodId=${id}&langId=${langId}`)
 
   }
 
-  mostSelling(){
-    return this.http.get(`${environment.baseUrl}/api/Products/GetMostSellingbyBranchId?branchId=3&langId=${this.langId}`)
+  mostSelling(langId){
+    return this.http.get(`${environment.baseUrl}/api/Products/GetMostSellingbyBranchId?branchId=3&langId=${langId}`)
   }
 
-  GetModifiresbyProductId(prodId){
-    console.log("lang",this.langId)
-    return this.http.get(`${environment.baseUrl}/api/Products/GetModifiresbyProductId?prodId=${prodId}&langId=${this.langId}`)
+  GetModifiresbyProductId(prodId,langId){
+    return this.http.get(`${environment.baseUrl}/api/Products/GetModifiresbyProductId?prodId=${prodId}&langId=${langId}`)
 
   }
 

@@ -12,7 +12,7 @@ export class ReviewPage implements OnInit {
   item
   nameOfProduct;
   priceOfProdct = 0
-  count
+  count = 1
   souceName;
   souceCount = 0
   soucePrice = 0
@@ -81,10 +81,12 @@ export class ReviewPage implements OnInit {
         this.priceOfProdct = this.priceOfProdct + (this.item[i].Prdoucts[q].Price * this.item[i].Prdoucts[q].count)
       }
 
-      if(this.item[i].Modfire != 0){
+      if(this.item[i].Name){
         this.item[i].ifMode = false
         this.modfirePrice = this.modfirePrice + (this.item[i].Price * this.item[i].count)
+        console.log(this.item[i].count)
       }else{
+        console.log("out")
         this.modfirePrice = this.modfirePrice + 0
         this.item[i].ifMode = true
       }
@@ -94,9 +96,10 @@ export class ReviewPage implements OnInit {
     console.log(this.soucePrice , this.modfirePrice , this.priceOfProdct)
   }
   minus(item) {
-    if (item.count != 1) {
+    console.log(item)
+    if (item.Prdoucts[0].count > 1) {
       item.count = item.count - 1
-      if(item.ifMode == true){
+      if(item.ifMode != true){
         this.modfirePrice = this.modfirePrice - item.Price
       }else {
         this.modfirePrice = 0
@@ -113,9 +116,10 @@ export class ReviewPage implements OnInit {
     }
   }
   plus(item) {
-    item.count = item.count + 1
-    if(item.ifMode == true){
-      this.modfirePrice = this.modfirePrice - item.Price
+    console.log(item)
+    if(item.ifMode != true){
+      this.modfirePrice = this.modfirePrice + item.Price
+      item.count = item.count + 1
     }else {
       this.modfirePrice = 0
     }
@@ -152,7 +156,7 @@ export class ReviewPage implements OnInit {
           "Count": this.item[i].ingridtArr[j].count
         })
       }
-      if(sessionStorage.getItem('ifModFire')!= "false"){
+      if(this.item[i].Name){
         modfiersArr.push({
           "Id": this.item[i].Id,
           "Price": this.item[i].Price * this.item[i].count,

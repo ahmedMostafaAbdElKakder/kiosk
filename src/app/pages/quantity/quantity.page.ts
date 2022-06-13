@@ -68,6 +68,7 @@ export class QuantityPage implements OnInit {
   showOrHideMod = false
   getData(){
     this.item =  JSON.parse(sessionStorage.getItem('ModfireOfChose'))
+    console.log(this.item)
     if(sessionStorage.getItem('ifModFire') == "false"){
       this.showOrHideMod = false
     }else {
@@ -105,7 +106,12 @@ export class QuantityPage implements OnInit {
     }
   }
   goBack(){
-    this.route.navigateByUrl('/add-souce')
+    if(this.item.ingridtArr.length != 0){
+      this.route.navigateByUrl('/add-souce')
+    }else {
+      this.route.navigateByUrl('/categoris')
+
+    }
   }
 
   gotoMenu(){
@@ -128,6 +134,7 @@ export class QuantityPage implements OnInit {
     }
     this.rest.sendObsData('true')
     this.route.navigateByUrl('/main_menu')
+    sessionStorage.removeItem('ifModFire')
   }
 
   cancelOrder(){

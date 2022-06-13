@@ -49,7 +49,6 @@ productImage
   getData() {
     this.item = JSON.parse(sessionStorage.getItem('ModfireOfChose'))
     let mod =  sessionStorage.getItem('ifModFire')
-    console.log(typeof(this.item))
     if(mod == 'false'){
       this.item.Modfire = []
       console.log("true")
@@ -58,12 +57,22 @@ productImage
     this.prdouctName = this.prdouct.Name
     this.productPrice = this.prdouct.Price
     this.productImage = this.prdouct.Image
-    this.rest.GetItemsbyProductId().subscribe((res: any) => {
+    this.rest.GetItemsbyProductId(this.langId,this.prdouct.Id).subscribe((res: any) => {
       console.log(res)
-      this.arrOfSouces = res
-      for (let i = 0; i < this.arrOfSouces.length; i++) {
-        this.arrOfSouces[i].count = 0
+      if(res.length != 0){
+        this.arrOfSouces = res
+        for (let i = 0; i < this.arrOfSouces.length; i++) {
+          this.arrOfSouces[i].count = 0
+        }
+      }else {
+        console.log(res.length)
+        let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
+        this.item.ingridtArr = []
+        this.item.Prdoucts = [products]
+        sessionStorage.setItem('ModfireOfChose', JSON.stringify(this.item))
+        this.route.navigateByUrl('/quantity')
       }
+
     })
   }
 
@@ -84,7 +93,9 @@ productImage
     } else {
       this.item.ingridtArr = []
       this.item.Prdoucts = [products]
+      sessionStorage.setItem('ModfireOfChose', JSON.stringify(this.item))
       this.route.navigateByUrl('/quantity')
+      
     }
 
   }

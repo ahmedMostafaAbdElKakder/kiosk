@@ -26,6 +26,7 @@ export class CategorisPage implements OnInit {
   OrderDone
   MyOrder
   Modfires
+  Next
   constructor(private rest: RestService,
     private route :Router,
      private navCtr: NavController) { }
@@ -40,6 +41,7 @@ export class CategorisPage implements OnInit {
       this.OrderDone = "دفع"
       this.MyOrder = "طلباتي - في المتجر"
       this.Modfires = "الاضافات"
+      this.Next = "التالي"
     }else {
       this.dir = "ltr"
       this.Menu = "Main Menu"
@@ -48,6 +50,7 @@ export class CategorisPage implements OnInit {
       this.OrderDone = "Done"
       this.MyOrder = "My Order - In Shop"
       this.Modfires = "Modfires"
+      this.Next = "Next"
     }
     this.getData()
     this.getCategoris()
@@ -55,7 +58,7 @@ export class CategorisPage implements OnInit {
   }
 
   getCategoris() {
-    this.rest.getCategoriWithProduct().subscribe((res: any) => {
+    this.rest.getCategoriWithProduct(this.langId).subscribe((res: any) => {
       console.log(res)
       this.categoris = res
       for (let i = 0; i < this.categoris.length; i++) {
@@ -85,10 +88,26 @@ export class CategorisPage implements OnInit {
   GetModifiresbyProductId(item , id) {
     sessionStorage.setItem('ProductOfChose', JSON.stringify(item))
     this.price = item.Price
-    this.rest.GetModifiresbyProductId(id).subscribe((res: any) => {
+    this.rest.GetModifiresbyProductId(id,this.langId).subscribe((res: any) => {
       console.log(res)
-      this.showModfire = true
-      this.ModifiresbyProductId = res
+      if(res.length != 0){
+        this.showModfire = true
+        this.ModifiresbyProductId = res
+      }else {
+        this.rest.GetItemsbyProductId(this.langId,id).subscribe((res : any) => {
+          if(res.length == 0){
+            let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
+            let item:any = {}
+            item.ingridtArr = []
+            item.Prdoucts = [products]
+            item.Modfire = []
+            sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
+            this.route.navigateByUrl('/quantity')
+          }else {
+            this.gotToDetails('normal')
+          }
+        })
+      }
     })
   }
   close() {
@@ -99,7 +118,11 @@ export class CategorisPage implements OnInit {
 
     if(arrOfMod){
       this.disalbedButton = false
-      this.arrOfModLength = "Total Items"  + " " + `(${arrOfMod.length})`
+      if(this.langId == '1'){
+        this.arrOfModLength = "إجمالي المنتجات"  + " " + `(${arrOfMod.length})`
+      }else {
+        this.arrOfModLength = "Total Items"  + " " + `(${arrOfMod.length})`
+      }
     }else{
       this.disalbedButton = true
       if(this.langId == '1'){

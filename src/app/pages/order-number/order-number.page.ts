@@ -21,7 +21,7 @@ export class OrderNumberPage implements OnInit {
     this.langId =  sessionStorage.getItem("lang")
     this.orderNumber = sessionStorage.getItem('numberOfOrder')
     if(this.langId == '1'){
-      this.OrderDone = "عوردة الي الرئيسية"
+      this.OrderDone = "الرئيسية"
       this.title = "رقم الطلب"
     }else {
       this.title = "Your Order Number is"
