@@ -2,7 +2,6 @@ ion-content{
   --background: #212121;
 }
 ion-button {
-  --background: #ff6e0d;
   --color: black; 
   text-transform: none;
 }
@@ -16,7 +15,6 @@ ion-button {
   justify-content: center
 }
 .logo .logoImage {
-  margin-top: 20%;
    width: 50%;
   border-radius: 10px
 }
@@ -26,7 +24,8 @@ ion-button {
 }
 .title h1 {
   font-size: 5vw;
-  color: #ff6e0d
+  color: #fff;
+  margin-top: 0
 }
 .product{
   border: 10px solid #e6e3e3;
@@ -34,7 +33,6 @@ ion-button {
   display: flex;
   justify-content: space-between;
   height:33vh;
-  background: #ff6e0d;
 
 }
 .product .imgProduct{
@@ -44,10 +42,11 @@ ion-button {
   height: 45% !important;
 }
 .product .button{
-  --background:#fff; 
+  --background:#fab328; 
   text-transform: none;
   font-size: 5vw;
   height: 19%;
+  --border-radius: 0
 }
 .product .button .button-native{
   padding: 20px
@@ -65,9 +64,11 @@ ion-button {
   text-transform: none;
   font-size: 5vw;
   height: 100px;
+  --background:#fff; 
+  --border-radius: 0
 }
 .footer .lang{
-  background: #fff;
+  background: #a8a8a8;
   margin-right: 12px;
   padding: 5px;
 }

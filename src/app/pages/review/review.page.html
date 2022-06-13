@@ -1,15 +1,15 @@
 <ion-header>
-  <div class="back" style="background:#fff">
+  <div class="back" style="background:#212121">
     <ion-button (click)="goBack()">{{Back}}</ion-button>
   </div>
 </ion-header>
 
 <ion-content [dir]="dir">
   <div class="logo">
-    <ion-img class="logoImage" src="assets/images/DunkinLogo.png"></ion-img>
+    <ion-img class="logoImage" src="assets/images/logoFinal02.png"></ion-img>
   </div>
   <div class="title">
-    <p style="color: #ff6e0d ; font-size: 5vw">{{reviewMyOrder}}</p>
+    <p style="color: #fff ; font-size: 5vw">{{reviewMyOrder}}</p>
   </div>
 
   <div class="containerPrdouct">
@@ -41,7 +41,7 @@
   </div>
 
   <div class="fotter">
-    <p style="color: #ff6e0d ; font-size: 4vw ; font-weight: bold">{{Total}}
+    <p style="color: #fff ; font-size: 4vw ; font-weight: bold">{{Total}}
       LE.{{totalPrice}}</p>
     <div class="ion-foter">
       <ion-button (click)="cancel()">{{Cancel}}</ion-button>

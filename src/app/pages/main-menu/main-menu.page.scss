@@ -1,5 +1,8 @@
+ion-header{
+    background: #fff
+}
 ion-button {
-    --background: #ff6e0d;
+    --background: #bbbbbb;
     --color: #fff; 
     text-transform: none;
   }
@@ -7,11 +10,6 @@ ion-button {
     --background:#fff ;
     --color:black
 }
-.imgProduct{
-    height: 20vh;
-    width: 50%;
-  }
-
   .cover {
     position: absolute;
     width: 100%;
@@ -93,7 +91,7 @@ ion-button {
     font-size: 10px;
 }
 .myOrder{
-    background: #ff6e0d;
+    background: #bbbbbb;
     padding :5px 10px
 }
 .myOrder h4 {

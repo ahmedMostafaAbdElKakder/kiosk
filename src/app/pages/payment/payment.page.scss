@@ -2,7 +2,7 @@ ion-content{
   --background: #212121;
 }
 ion-button {
-  --background: #ff6e0d;
+  --background: #c6c6c6;
   --color: black; 
   text-transform: none;
 }
@@ -24,7 +24,6 @@ ion-button {
   }
   .logo{
     display: flex;
-    margin-top: 20%;
     justify-content: center
   }
   .logo .logoImage {
@@ -38,7 +37,8 @@ ion-button {
   }
   .title h1 {
     font-size: 5vw;
-    color: #ff6e0d
+    color: #fff;
+    margin-top: 0;
   }
   .product{
     border: 10px solid #e6e3e3;
@@ -46,7 +46,6 @@ ion-button {
     display: flex;
     justify-content: space-between;
     height:33vh;
-    background: #ff6e0d;
   
   }
   .product .imgProduct{
@@ -55,7 +54,7 @@ ion-button {
     margin: 30px auto;
   }
   .product .button{
-    --background:#fff; 
+    --background:#fab328; 
     text-transform: none;
     height: 112px;
     font-size: 4vw;

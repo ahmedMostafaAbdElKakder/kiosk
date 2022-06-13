@@ -1,6 +1,6 @@
 <ion-header>
-  <div style="background:#ff6e0d ;text-align: center">
-    <img class="imgProduct" src="assets/images/logoWhite.png">
+  <div>
+    <img class="imgProduct" src="assets/images/panner.jpeg">
   </div>
   <div *ngIf="showCover" class="cover">
     <h1>coffee</h1>
@@ -24,6 +24,14 @@
                 <img src="assets/images/best.png">
                 <p>Best Selling</p>
               </div>
+              <div  class="menuItem">
+                <img src="assets/images/best.png">
+                <p>Discount</p>
+              </div>
+              <div  class="menuItem">
+                <img src="assets/images/best.png">
+                <p>Promotion</p>
+              </div>
               <div *ngFor="let item of categoris" class="menuItem" (click)="gotToDetails(item)">
                 <img src="{{item.Image}}">
                 <p>{{item.Name}}</p>
@@ -38,6 +46,18 @@
                     <div (click)="gotToSugg()">
                       <img src="assets/images/best.png">
                       <p class="name">Best Selling</p>
+                    </div>
+                  </ion-col>
+                  <ion-col size="4" class="rowOne colOne">
+                    <div (click)="gotToSugg()">
+                      <img src="assets/images/best.png">
+                      <p class="name">Promotion</p>
+                    </div>
+                  </ion-col>
+                  <ion-col size="4" class="rowOne colOne">
+                    <div (click)="gotToSugg()">
+                      <img src="assets/images/best.png">
+                      <p class="name">Discount</p>
                     </div>
                   </ion-col>
                   <ion-col size="4" class="rowOne" [ngClass]="{'colOne':item.status == false}"
