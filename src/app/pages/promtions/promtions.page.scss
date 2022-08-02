@@ -25,18 +25,17 @@ ion-button {
       font-weight: bold;
       margin-top: 10%
   }
-
   .back {
     text-align: right;
   }
   .backIfRight{
     text-align: left;
   }
-  .back p , .backIfRight p{
+  .back p ,.backIfRight p {
       font-weight: bold;
       font-size: 5vw;
   }
-  .back ion-button , .backIfRight ion-button{
+  .back ion-button{
     --padding-start: 2em;
     --padding-end: 2em;
     --border-radius:5px;
@@ -46,12 +45,17 @@ ion-button {
     margin-bottom: 5%;
     height: 100px;
   }
+
+  .imgProduct{
+      width: auto
+  }
   .products{
     text-align: center;
     height: 52vh;
     overflow-y: scroll;
 }
 .products img {
+    width:100%;
     height: 200px;
 }
 .products .price{
@@ -72,7 +76,7 @@ ion-button {
     border-right: 1px solid #c2c2c2;
 }
 .menuItem{
-    padding: 30px 0;
+    padding-bottom: 5px;
     border-bottom: 1px solid #c2c2c2
 }
 .menuItem p{
@@ -82,10 +86,10 @@ ion-button {
     font-weight: bold;
     font-size: 3vw;
 }
-.menuItem img {
-   
-    height: 200px;
-}
+// .menuItem img {
+//     width:100%;
+//     height: 200px;
+// }
 .price_name{
     display: flex;
     justify-content: space-between;
@@ -98,8 +102,7 @@ ion-button {
 .myOrder h4 {
     margin: 0;
     font-size: 5vw;
-    color: #000;
-    padding: 20px 10px;
+    color: #000
 }
 
 .confirmOrCancel{
@@ -118,16 +121,15 @@ ion-button {
 .footer {
     position: absolute;
     width: 100%;
-    bottom: 1%
+    bottom: 0
 }
 
-.Content {
-    padding: 5px;
-}
 .Content .navgation div {
     border-bottom: 1px solid gray;
 }
-
+.navgation{
+    margin-top: -19%;
+}
 .Content .navgation{
     overflow-y: scroll;
     border-radius: 5px;
@@ -140,45 +142,37 @@ ion-button {
     font-size: 4vw;
     height: 112px;
 }
-.Content .mainMenu{
-    font-size: 3rem;
-    font-weight: bold;
-    margin-top: 50%;
-}
 
 @media only screen and (max-width:768px){
-  .imgProduct{
-    width: 81px;
-}
-
-.back ion-button{
-    height: 36px;
-}
-.backIfRight ion-button{
-    height: 36px;
-}
-.Content .mainMenu{
-    font-size: 13px;
-}
-.Content{
-    padding: 0
-}
-.navgation{
-    margin-top: -19%;
-}
- .products img{
-    height: 55px;
+    .imgProduct{
+      width: 81px;
   }
-  .menuItem img{
-    height: 50px;
+  
+  .back ion-button{
+      height: 36px;
   }
-  .menuItem{
-    padding: 15px 0;
+  .Content .mainMenu{
+      font-size: 13px;
   }
-  .myOrder h4{
-    padding: 2px 10px;
+  .Content{
+      padding: 0
   }
-  .confirmOrCancel ion-button{
-    height: 44px;
+  .navgation{
+      margin-top: -19%;
   }
-}
+   .products img{
+      height: 55px;
+    }
+    .menuItem img{
+      height: 50px;
+    }
+    .menuItem{
+      padding: 15px 0;
+    }
+    .myOrder h4{
+      padding: 2px 10px;
+    }
+    .confirmOrCancel ion-button{
+      height: 44px;
+    }
+  }

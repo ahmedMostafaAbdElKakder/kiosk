@@ -1,5 +1,5 @@
 ion-content{
-  --background: #212121;
+  --background:rgb(60, 60, 59);
 }
 ion-button {
   --color: black; 
@@ -27,61 +27,89 @@ ion-button {
   color: #fff;
   margin-top: 0
 }
+
+.ion_col{
+  margin-right: 15px
+}
 .product{
-  border: 10px solid #e6e3e3;
+  border:25px solid #fff;
   flex-direction: column;
   display: flex;
   justify-content: space-between;
-  height:33vh;
-
+  height:30vh;
+ // background: black;
+  border-radius: 5px;
 }
 .product .imgProduct{
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   margin-top: 25%;
   width: 54%;
   height: 45% !important;
 }
 .product .button{
-  --background:#fab328; 
+  --background: rgb(252, 180, 0); 
   text-transform: none;
   font-size: 5vw;
   height: 19%;
-  --border-radius: 0
+  --border-radius:5px
 }
 .product .button .button-native{
   padding: 20px
 }
 
 .footer{
-  text-align: center;
-  margin-top: 10%;
-  height: 5%;
+     margin-top: 10%;
+     justify-content: space-evenly;
+     display: flex;
 }
 .footer .button{
   width: 34%;
-  margin-right: 12px;
-  margin-left: 14px;
-  text-transform: none;
   font-size: 5vw;
-  height: 100px;
-  --background:#fff; 
-  --border-radius: 0
+  border-radius: 5px;
+  background: #fff;
+  color: rgb(60, 60, 59);
+  height: 100%;
+  height: 115px;
+  padding-top: 20px
+
 }
 .footer .lang{
-  background: #a8a8a8;
-  margin-right: 12px;
-  padding: 5px;
+  // background: #cccccc;
+  font-weight: bold
 }
 
 .changeLang{
-  --background: #ff6e0d;
+  background: rgb(252, 180, 0) !important;
 }
 
+.languish{
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+}
+.languish p {
+  margin: 0
+}
+.changeLangEnglis{
+  margin-left: 2%
+}
 @media only screen and (max-width:768px){
   .product{
-    height: 33vh;
+    height: 29vh;
+    border: 10px solid #fff;
+  }
+  .changeLangEnglis{
+    margin-left: 5%;
   }
   .footer .button{ 
-    height: 35px;
+    font-size: 4vw;
+    height: 44px;
+    padding-top: 4%;
+  }
+  .english{
+    margin-top: 16%;
+  }
+  .arabic {
+    margin-top: 14%;
   }
 }

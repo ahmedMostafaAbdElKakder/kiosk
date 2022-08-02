@@ -7,31 +7,32 @@
   </div>
 </ion-header> -->
 <div class="header">
-    <img class="imgProduct " src="assets/images/kiosk.png">
-  </div>
+  <img class="imgProduct " src="assets/images/kiosk.png">
+</div>
 
 <ion-content [dir]="dir">
   <div class="">
-      <div class="back"  [ngClass]="{'back':dir == 'ltr', 'backIfRight':dir == 'rtl'}">
-          <ion-button (click)="goBack()">{{Back}}</ion-button>
-        </div>
-    <ion-grid style="padding: 0">
-      <ion-row>
+    <div class="back" [ngClass]="{'back':dir == 'ltr', 'backIfRight':dir == 'rtl'}">
+      <ion-button (click)="goBack()">{{Back}}</ion-button>
+    </div>
+
+    <ion-grid class="Content">
+      <ion-row style="padding: 0">
         <ion-col class="menu" [ngClass]="{'ifClick':showModfire}" size="3">
-            <p class="mainMenu"> {{Menu}} </p>
-            <div  class="menuItem">
+          <p class="mainMenu">{{Menu}}</p>
+          <div>
+            <div class="menuItem">
               <img src="assets/images/mostSelling.png">
               <p>{{bestSelling}}</p>
             </div>
-            <div class="menuItem" (click)="gotToDetails('Discount')">
+            <div class="menuItem" (click)="gotToItems('Discount')">
               <img src="assets/images/discount.png">
               <p>{{discount}}</p>
             </div>
-            <div  class="menuItem" routerLink="/promtions">
+            <div class="menuItem" routerLink="/promtions">
               <img src="assets/images/promotion.png">
               <p>{{promotions}}</p>
             </div>
-          <div>
             <div *ngFor="let item of categoris" class="menuItem" (click)="ChoseCategori(item)">
               <img src="{{item.Image}}">
               <p>{{item.Name}}</p>
@@ -42,13 +43,13 @@
           <div class="products" [ngClass]="{'ifClick':showModfire}">
             <ion-grid>
               <ion-row>
-                <!--  [ngClass]="{'colOne':item.status == false}" -->
                 <ion-col size="6" class="rowOne colOne" (click)="GetModifiresbyProductId(item,item.Id)"
                   *ngFor="let item of items ; let i = index">
-                  <span *ngIf="langId != 1" class="price_name">{{LE}}.{{item.Price}}</span>
-                  <span *ngIf="langId == 1" class="price_name">{{item.Price}}.{{LE}}</span>
+                  <p class="price_name">
+                    LE.{{item.Price}}
+                  </p>
                   <img src="{{item.Image}}">
-                  <p class="price_name">{{item.Name}}</p>
+                  <p class="nameOfPrdocuct">{{item.Name}}</p>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -58,7 +59,7 @@
     </ion-grid>
     <div [ngClass]="{'cover2':showModfire}"></div>
   </div>
-  
+
 
   <section class="recmoended" *ngIf="showModfire">
     <div class="Modfires">
@@ -84,9 +85,9 @@
     </div>
     <div class="foter">
       <p>{{arrOfModLength}}</p>
-      <div class="confirmOrCancel" dir="ltr">
-          <ion-button [disabled]="arrOfModLength" (click)="cancelOrder()">{{Cancel}}</ion-button>
+      <div class="confirmOrCancel">
         <ion-button [disabled]="arrOfModLength" (click)="Done()">{{OrderDone}}</ion-button>
+        <ion-button [disabled]="arrOfModLength" (click)="cancelOrder()">{{Cancel}}</ion-button>
       </div>
     </div>
   </section>

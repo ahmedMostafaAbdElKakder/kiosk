@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from 'src/app/rest.service';
-import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { RestService } from 'src/app/rest.service';
 
 @Component({
-  selector: 'app-categoris',
-  templateUrl: './categoris.page.html',
-  styleUrls: ['./categoris.page.scss'],
+  selector: 'app-prom-details',
+  templateUrl: './prom-details.page.html',
+  styleUrls: ['./prom-details.page.scss'],
 })
-export class CategorisPage implements OnInit {
-
-  categoris
+export class PromDetailsPage implements OnInit {
   categoriObj;
   nameOfCat;
   items = []
@@ -30,10 +27,8 @@ export class CategorisPage implements OnInit {
   bestSelling;
   discount;
   promotions
-  LE
-  constructor(private rest: RestService,
-    private route :Router,
-     private navCtr: NavController) { }
+  categoris = []
+  constructor(private rest : RestService ,  private route :Router) { }
 
   ngOnInit() {
     this.langId = localStorage.getItem('lang')
@@ -49,8 +44,6 @@ export class CategorisPage implements OnInit {
       this.bestSelling = "افضل المنتجات"
       this.discount = "الخصومات"
       this.promotions = "العروض"
-      this.LE = "جنيه"
-
     }else {
       this.dir = "ltr"
       this.Menu = "Main Menu"
@@ -58,17 +51,29 @@ export class CategorisPage implements OnInit {
       this.Cancel = "Cancel Order"
       this.OrderDone = "Done"
       this.MyOrder = "My Order - In Shop"
-      this.Modfires = "Modifiers"
+      this.Modfires = "Modfires"
       this.Next = "Next"
       this.bestSelling = "Best Selling"
       this.discount = "Discount"
       this.promotions ="Promotion"
-      this.LE = "LE"
-
     }
     this.getData()
     this.getCategoris()
     this.ifArrOfModfier()
+  }
+
+  getData() {
+    this.categoriObj = JSON.parse(sessionStorage.getItem('promotions'))
+    console.log(this.categoriObj)
+    this.nameOfCat = this.categoriObj.PromotionName
+    this.items = this.categoriObj.Products
+    for (let i = 0; i < this.items.length; i++) {
+      if (i == 2 || i == 5 || i == 8 || i == 11) {
+        this.items[i].status = true
+      } else {
+        this.items[i].status = false
+      }
+    }
   }
 
   getCategoris() {
@@ -84,20 +89,7 @@ export class CategorisPage implements OnInit {
       }
     })
   }
-
-  getData() {
-    this.categoriObj = JSON.parse(sessionStorage.getItem('obj'))
-    console.log(this.categoriObj)
-    this.nameOfCat = this.categoriObj.Name
-    this.items = this.categoriObj.Products
-    for (let i = 0; i < this.items.length; i++) {
-      if (i == 2 || i == 5 || i == 8 || i == 11) {
-        this.items[i].status = true
-      } else {
-        this.items[i].status = false
-      }
-    }
-  }
+  
 
   idOfIngrdtiont;
   GetModifiresbyProductId(item , id) {
@@ -107,7 +99,6 @@ export class CategorisPage implements OnInit {
     this.rest.GetModifiresbyProductId(id,this.langId).subscribe((res: any) => {
       console.log(res)
       if(res.length != 0){
-        console.log("hello")
         this.showModfire = true
         this.ModifiresbyProductId = res
       }else {
@@ -127,6 +118,7 @@ export class CategorisPage implements OnInit {
       }
     })
   }
+
   close() {
     this.showModfire = false
   }
@@ -152,6 +144,37 @@ export class CategorisPage implements OnInit {
 
   }
 
+  gotToItems(item) {
+    if (item == 'Discount') {
+      this.rest.gitDiscount(this.langId).subscribe((res: any) => {
+        console.log(res)
+        let obj = {
+          Name : 'Discount',
+          Products : res
+        }
+        sessionStorage.setItem('obj', JSON.stringify(obj))
+        this.route.navigateByUrl('/discount')
+
+      })
+  
+    } else {
+      sessionStorage.setItem('obj', JSON.stringify(item))
+      this.route.navigateByUrl('/categoris')
+    }
+
+  }
+
+  // gotToDetails(item) {
+  //   if(item == "normal"){
+  //     this.route.navigateByUrl('/add-souce')
+  //     let empty = {}
+  //     sessionStorage.setItem('ModfireOfChose', JSON.stringify(empty))
+  //     sessionStorage.setItem("ifModFire",'false')
+  //   }else {
+  //     sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
+  //     this.route.navigateByUrl('/add-souce')
+  //   }
+  // }
   gotToDetails(item) {
     if(item == "normal"){
       this.rest.GetItemsbyProductId(this.langId,this.idOfIngrdtiont).subscribe((res : any) => {
@@ -170,18 +193,7 @@ export class CategorisPage implements OnInit {
       let empty = {}
       sessionStorage.setItem('ModfireOfChose', JSON.stringify(empty))
       sessionStorage.setItem("ifModFire",'false')
-    } else if (item == 'Discount'){
-      this.rest.gitDiscount(this.langId).subscribe((res: any) => {
-        console.log(res)
-        let obj = {
-          Name : 'Discount',
-          Products : res
-        }
-        sessionStorage.setItem('obj', JSON.stringify(obj))
-        this.route.navigateByUrl('/discount')
-
-      })
-    }
+    } 
     else {
       console.log("asdasdsa",item)
       this.rest.GetItemsbyProductId(this.langId,this.idOfIngrdtiont).subscribe((res : any) => {
@@ -200,14 +212,15 @@ export class CategorisPage implements OnInit {
     }
 
   }
+
   prdouct
   price
   ChoseCategori(item){
     sessionStorage.setItem("obj",JSON.stringify(item))
-    this.getData()
+    this.route.navigateByUrl('/categoris')
   }
   goBack(){
-    this.route.navigateByUrl('/main_menu')
+    this.route.navigateByUrl('/promtions')
   }
   cancelOrder(){
     sessionStorage.clear()
@@ -216,4 +229,5 @@ export class CategorisPage implements OnInit {
   Done(){
     this.route.navigateByUrl('/review')
   }
+
 }

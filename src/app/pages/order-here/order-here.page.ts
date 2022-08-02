@@ -15,6 +15,6 @@ export class OrderHerePage implements OnInit {
   }
 
   geOeder(){
-    this.route.navigateByUrl('/home')
+    this.route.navigateByUrl('/phone-number')
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { RestService } from 'src/app/rest.service';
 import { Router } from '@angular/router';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-quantity',
@@ -30,13 +31,16 @@ export class QuantityPage implements OnInit {
   modfieres
   edit;
   Customized
+  arrayOfIngr
+  LE
   constructor(private navCtr: NavController , 
+    private location: Location,
     private route : Router,
     private rest : RestService) { }
 
   ngOnInit() {
 
-    this.langId = sessionStorage.getItem("lang")
+    this.langId = localStorage.getItem("lang")
     if (this.langId == '1') {
       this.dir = 'rtl'
       this.Back = "رجوع"
@@ -48,8 +52,9 @@ export class QuantityPage implements OnInit {
       this.modfieres = 'المكونات'
       this.edit = "هل تريد تغير اي اضاقات"
       this.Customized = "تعديل"
+      this.LE = "جنيه"
     } else {
-      this.dir = 'trl'
+      this.dir = 'ltr'
       this.Back = "Back"
       this.Cancel = "Cancel"
       this.addChange = "Add To Order"
@@ -59,6 +64,7 @@ export class QuantityPage implements OnInit {
       this.modfieres = 'Modifiers '
       this.edit = "Want to Change Ingredients ?"
       this.Customized = "Customized"
+      this.LE = "LE"
     }  
 
     this.getData()
@@ -69,22 +75,26 @@ export class QuantityPage implements OnInit {
   getData(){
     this.item =  JSON.parse(sessionStorage.getItem('ModfireOfChose'))
     console.log(this.item)
-    if(sessionStorage.getItem('ifModFire') == "false"){
+    if(!this.item.Name){
       this.showOrHideMod = false
     }else {
       this.showOrHideMod = true
       this.modfireName = this.item.Name
       this.modfirePrice = this.item.Price
+      console.log(this.modfireName,this.modfirePrice)
     }
     this.prdouct =  JSON.parse(sessionStorage.getItem('ProductOfChose'))
     this.nameOfItem = this.prdouct.Name
     this.itemPrice = this.prdouct.Price
     this.image = this.prdouct.Image
+    console.log(this.nameOfItem,this.itemPrice,this.image)
 
     if(this.item.ingridtArr.length != 0){
+      this.arrayOfIngr = this.item.ingridtArr
       this.souceName = this.item.ingridtArr[0].Name
       this.souceCount = this.item.ingridtArr[0].count
       this.soucePrice = this.item.ingridtArr[0].Price * this.item.ingridtArr[0].count
+      console.log( this.souceName,this.souceCount,this.soucePrice)
     }else {
       this.souceName = " "
       this.souceCount = " "
@@ -106,12 +116,13 @@ export class QuantityPage implements OnInit {
     }
   }
   goBack(){
-    if(this.item.ingridtArr.length != 0){
-      this.route.navigateByUrl('/add-souce')
-    }else {
-      this.route.navigateByUrl('/categoris')
+    this.location.back();
+    // if(this.item.ingridtArr.length != 0){
+    //   this.route.navigateByUrl('/add-souce')
+    // }else {
+    //   this.route.navigateByUrl('/categoris')
 
-    }
+    // }
   }
 
   gotoMenu(){
@@ -121,7 +132,9 @@ export class QuantityPage implements OnInit {
 
     this.item.Prdoucts[0].count = this.count
     if(this.item.ingridtArr.length != 0){
-      this.item.ingridtArr[0].count = (this.count + this.item.ingridtArr[0].count) - 1
+      for(let i = 0 ;  i < this.item.ingridtArr.length ; i++){
+        this.item.ingridtArr[i].count = this.item.ingridtArr[i].count * this.count
+      }
     }
     let dumy = []
    let arrOfModfire = JSON.parse(sessionStorage.getItem('arrOfModfire'))

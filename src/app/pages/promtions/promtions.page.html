@@ -1,0 +1,79 @@
+<!-- <ion-header>
+  <div>
+    <img class="imgProduct" src="assets/images/panner.jpeg">
+  </div>
+  <div *ngIf="showCover" class="cover">
+    <h1>coffee</h1>
+  </div>
+</ion-header> -->
+<div class="header">
+    <img class="imgProduct " src="assets/images/kiosk.png">
+  </div>
+
+<ion-content [dir]="dir">
+  <div class="">
+
+    <div class="back" [ngClass]="{'back':dir == 'ltr', 'backIfRight':dir == 'rtl'}">
+      <ion-button (click)="goBack()">{{Back}}</ion-button>
+    </div>
+
+    <section class="Content">
+      <ion-grid style="padding: 0">
+        <ion-row>
+          <ion-col size="3" class="navgation">
+              <p style="font-weight: bold ;font-size: 15px;">{{Menu}}</p>
+            <div>
+              <div  class="menuItem">
+                <img src="assets/images/mostSelling.png">
+                <p>{{bestSelling}}</p>
+              </div>
+              <div class="menuItem" (click)="gotToItems('Discount')">
+                <img src="assets/images/discount.png">
+                <p>{{discount}}</p>
+              </div>
+              <div  class="menuItem" >
+                <img src="assets/images/promotion.png">
+                <p>{{promotions}}</p>
+              </div>
+              <div *ngFor="let item of categoris" class="menuItem" (click)="gotToItems(item)">
+                <img src="{{item.Image}}">
+                <p>{{item.Name}}</p>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="products">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="4" class="rowOne" [ngClass]="{'colOne':item.status == false}"
+                    *ngFor="let item of promotionsArr ; let i = index" (click)="gotToDetails(item)">
+                    <!-- <img src="{{item.Image}}"> -->
+                    <img src="assets/images/promotion.png">
+                    <p class="name">{{item.Name}}</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </section>
+  </div>
+
+  <section class="footer">
+    <div class="myOrder">
+      <h4>{{MyOrder}}</h4>
+    </div>
+    <div class="foter">
+      <p>{{arrOfModLength}}</p>
+      <div class="confirmOrCancel">
+        <ion-button (click)="cancelOrder()" [disabled]="disalbedButton">{{Cancel}}</ion-button>
+        <ion-button (click)="Done()" [disabled]='disalbedButton'>{{OrderDone}}</ion-button>
+      </div>
+    </div>
+  </section>
+
+
+
+
+</ion-content>

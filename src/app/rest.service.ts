@@ -39,6 +39,34 @@ export class RestService {
     return this.http.post(`${environment.baseUrl}/api/Orders/AddOrder`,obj)
   }
 
+  gitDiscount(langId){
+    return this.http.get(`${environment.baseUrl}/api/Discounts/getDiscounts?branchid=3&langId=${langId}`)
+  }
+  
+  getPromtion(langId){
+    return this.http.get(`${environment.baseUrl}/api/Promotions/getPromotions?branchid=3&langId=${langId}`)
+  }
+
+  getPromoDetails(langId,promoId){
+    return this.http.get(`${environment.baseUrl}/api/Promotions/GetPromotionProducts?promotionId=${promoId}&langId=${langId}`)
+  }
+
+  allPromtion(langId){
+    return this.http.get(`${environment.baseUrl}/api/Promotions/GetProductsForAllPromotion?branchid=3&langId=${langId}`)
+  }
+
+  // serial number
+  // http://206.225.82.102:8042/api/GiftCards/getGigtCard?SerialNumber=
+
+  sendValidSerial(serial){
+    return this.http.get(`${environment.baseUrl}/api/GiftCards/getGigtCard?branchId=3&SerialNumber=${serial}`)
+  }
+// api/GiftCards/getGigtCard?branchId={branchId}&SerialNumber={SerialNumber}
+  activeSerial(giftId,orderid){
+    return this.http.post(`${environment.baseUrl}/api/GiftCards/UseGiftCard?giftId=${giftId}&orderid=${orderid}`,"")
+
+  }
+  // 
   sendObsData(event) {
     this.subject.next(event);
   }

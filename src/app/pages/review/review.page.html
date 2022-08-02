@@ -1,51 +1,82 @@
+<!-- <div class="block" *ngIf="block"></div> -->
 <ion-header>
-  <div class="back" style="background:#212121">
+  <div class="back" style="background: rgb(60, 60, 59);">
+    <ion-img class="logoImage" src="assets/images/logoFinal02.png"></ion-img>
     <ion-button (click)="goBack()">{{Back}}</ion-button>
   </div>
 </ion-header>
 
 <ion-content [dir]="dir">
-  <div class="logo">
-    <ion-img class="logoImage" src="assets/images/logoFinal02.png"></ion-img>
-  </div>
+  <ion-spinner dir="ltr" *ngIf="block" name="circles"></ion-spinner>
   <div class="title">
     <p style="color: #fff ; font-size: 5vw">{{reviewMyOrder}}</p>
   </div>
+  <div class="form-group serial" [dir]="dir" *ngIf="!block">
+      <input (input)="inputChange($event)" [(ngModel)]="serialNumber" [placeholder]="placeHolder" class="btn btn-primary" type="text">
+      <ion-button [disabled]="serialNumber == ''" style="color: #000" (click)="validSerial()">{{serialVaild}}</ion-button>
+    </div>
+    <p *ngIf="showStatusValid" style="color: green" class="giftCard">{{giftCardISVaild}} {{giftCardCount}} {{LE}}</p>
+    <p *ngIf="showStatusValidFalse && serialNumber != ''" style="color: red"  class="giftCard">{{giftCardISVaild}}</p>
 
-  <div class="containerPrdouct">
+  <div class="containerPrdouct" [dir]="dir" *ngIf="!block">
     <div class="containerOfShaping" style="margin-top: 5%;" *ngFor="let product of item ; let i = index">
       <div class="nameAndPrice">
-        <p>({{product.Prdoucts[0].count}}) {{product.Prdoucts[0].Name}}</p>
-        <p>LE.{{product.Prdoucts[0].Price * product.Prdoucts[0].count}}</p>
+        <p>{{product.Prdoucts[0].count}}x {{product.Prdoucts[0].Name}}</p>
+        <p>{{product.Prdoucts[0].Price * product.Prdoucts[0].count}} {{LE}} </p>
       </div>
       <hr>
-      <div class="nameAndPrice" *ngIf="product.ingridtArr.length ">
-        <p> ({{product.ingridtArr[0].count}}) {{product.ingridtArr[0].Name}}</p>
-        <p>LE.{{product.ingridtArr[0].Price * product.ingridtArr[0].count}}</p>
+      <div *ngIf="product.ingridtArr.length ">
+        <div class="nameAndPrice" *ngFor="let item of product.ingridtArr">
+          <p> {{item.count}}x {{item.Name}}</p>
+          <p>{{item.Price * item.count}} {{LE}}</p>
+        </div>
       </div>
       <hr>
       <div class="nameAndPrice" *ngIf="product.ifMode == false">
-        <p>({{product.count}}) {{product.Name}}</p>
-        <p>LE.{{product.Price * product.count}}</p>
+        <p>{{product.count}}x {{product.Name}}</p>
+        <p>{{product.Price * product.count}} {{LE}}</p>
+      </div>
+      <hr>
+      <div>
+        <p *ngIf="product.discount && product.DiscountType == 1 && langId != 1" class="right">{{Total}} <s style="color: red">{{LE}}.{{product.oldTotal}}</s> <br>
+          ({{product.discount}}%) {{upto}} {{product.MaxDiscountAmount}} </p>
+
+          <p *ngIf="product.discount && product.DiscountType == 2 && langId != 1" class="right">{{Total}} <s style="color: red">{{LE}}.{{product.oldTotal}}</s> <br>
+            (-{{product.discount}}) {{Discount}} </p>
+
+            <p *ngIf="product.discount && product.DiscountType == 1 && langId == 1" class="right">{{Total}} <s style="color: red">{{product.oldTotal}} {{LE}}</s> <br>
+              ({{product.discount}}%) {{upto}} {{product.MaxDiscountAmount}} </p>
+    
+              <p *ngIf="product.discount && product.DiscountType == 2 && langId == 1" class="right">{{Total}} <s style="color: red">{{product.oldTotal}} {{LE}}</s> <br>
+                (-{{product.discount}}) {{Discount}} </p>
+
+        <p *ngIf="product.discount" class="right"> {{product.total | number : '1.0'}} {{LE}}</p>
+        <p *ngIf="!product.discount" class="right"><span>{{Total}} </span> {{product.total | number : '1.0'}} {{LE}}
+        </p>
       </div>
       <div class="editOrRemove">
         <ion-button (click)="removeItem(i,product)">{{Remove}}</ion-button>
-        <div class="plusAndMuins">
-          <ion-button (click)="minus(product)">-</ion-button>
-          <p>{{product.Prdoucts[0].count}}</p>
+        <div class="plusAndMuins" [dir]="dir">
           <ion-button (click)="plus(product)">+</ion-button>
+          <ion-button class="countProduct">{{product.Prdoucts[0].count}}</ion-button>
+          <ion-button (click)="minus(product)">-</ion-button>
         </div>
         <!-- <ion-button (click)="edit(product.Id)">{{Edit}}</ion-button> -->
       </div>
+
     </div>
   </div>
 
+  
+
+
   <div class="fotter">
+
     <p style="color: #fff ; font-size: 4vw ; font-weight: bold">{{Total}}
-      LE.{{totalPrice}}</p>
-    <div class="ion-foter">
-      <ion-button (click)="cancel()">{{Cancel}}</ion-button>
-      <ion-button [disabled]="!shwoProced" (click)="goToCheckOut()">{{CheckOut}}</ion-button>
+      {{totalPrice | number : '1.0'}} {{LE}}</p>
+    <div class="ion-foter" dir="ltr">
+      <ion-button [disabled]="block" (click)="cancel()">{{Cancel}}</ion-button>
+      <ion-button [disabled]="block" (click)="goToCheckOut()">{{CheckOut}}</ion-button>
     </div>
   </div>
 </ion-content>

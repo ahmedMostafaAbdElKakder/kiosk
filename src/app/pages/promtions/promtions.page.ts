@@ -1,36 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/rest.service';
-import { NavController } from '@ionic/angular';
-import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-@Component({
-  selector: 'app-main-menu',
-  templateUrl: './main-menu.page.html',
-  styleUrls: ['./main-menu.page.scss'],
-})
-export class MainMenuPage implements OnInit {
 
+@Component({
+  selector: 'app-promtions',
+  templateUrl: './promtions.page.html',
+  styleUrls: ['./promtions.page.scss'],
+})
+export class PromtionsPage implements OnInit {
+
+  constructor(private rest : RestService ,  private route: Router,) { }
+  langId
+  promoId;
   categoris = []
   showCover: boolean = false
   arrOfModLength;
   disalbedButton = true
-  langId
-  subscription: Subscription;
   Menu
   Back
   Cancel
   OrderDone
   MyOrder
   dir
+  promotionsArr
   bestSelling;
   discount;
   promotions
-  constructor(private rest: RestService,
-    private route: Router,
-    private navCtr: NavController) { }
-
   ngOnInit() {
-    this.langId = localStorage.getItem('lang')
+
+     this.langId = localStorage.getItem('lang')
     if (this.langId == '1') {
       this.dir = "rtl"
       this.Menu = "قائمة الطلبات"
@@ -54,20 +52,21 @@ export class MainMenuPage implements OnInit {
     }
     this.getCategoris()
     this.ifArrOfModfier()
-
-    this.subscription = this.rest.getObsData().subscribe(res => {
-      if (res == 'true') {
-        console.log("true")
-        this.getCategoris()
-        this.ifArrOfModfier()
-      } else {
-        console.log("false")
-        this.getCategoris()
-        this.ifArrOfModfier()
-      }
+    this.rest.getPromtion(this.langId).subscribe((res : any) => {
+      console.log(res)
+      this.promotionsArr = res
     })
   }
 
+  gotToDetails(item){
+    console.log(item)
+    this.rest.getPromoDetails(this.langId,item.Id).subscribe(res => {
+      console.log(res)
+      sessionStorage.setItem('promotions', JSON.stringify(res))
+      this.route.navigateByUrl('/prom-details')
+
+    })
+  }
   getCategoris() {
     this.rest.getCategoriWithProduct(this.langId).subscribe((res: any) => {
       console.log(res)
@@ -109,7 +108,19 @@ export class MainMenuPage implements OnInit {
   }
 
 
-  gotToDetails(item) {
+  goBack() {
+    this.route.navigateByUrl('/main_menu')
+  }
+
+  cancelOrder() {
+    sessionStorage.clear()
+    this.route.navigateByUrl('/home')
+  }
+  Done() {
+    this.route.navigateByUrl('/review')
+  }
+
+  gotToItems(item) {
     if (item == 'Discount') {
       this.rest.gitDiscount(this.langId).subscribe((res: any) => {
         console.log(res)
@@ -129,16 +140,4 @@ export class MainMenuPage implements OnInit {
 
   }
 
-  goBack() {
-    this.route.navigateByUrl('/home')
-  }
-
-  cancelOrder() {
-    this.rest.sendObsData('true')
-    sessionStorage.clear()
-    this.route.navigateByUrl('/home')
-  }
-  Done() {
-    this.route.navigateByUrl('/review')
-  }
 }

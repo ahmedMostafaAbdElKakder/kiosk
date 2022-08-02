@@ -44,11 +44,11 @@ ion-button {
   .backIfRight{
     text-align: left;
   }
-  .back p , .backIfRight P{
+  .back p {
       font-weight: bold;
       font-size: 5vw;
   }
-  .back ion-button , .backIfRight ion-button{
+  .back ion-button{
     --padding-start: 2em;
     --padding-end: 2em;
     --border-radius:5px;
@@ -127,8 +127,7 @@ ion-button {
 .footer {
     position: absolute;
     width: 100%;
-    bottom: 1%
-
+    bottom:0;
 }
 .recmoended p{
     margin: 0;
@@ -188,7 +187,7 @@ ion-button {
 }
 .next {
     position: absolute;
-    bottom: 24%;
+    bottom: 29%;
     height: 100px !important;
     left: 14px;
     --background: rgb(252, 180, 0)!important;
@@ -235,16 +234,9 @@ ion-button {
         height:10vh !important;
     }
     .cover2{
-        height:23vh;
+        height: 30vh;
     }
     .next {
         height: 36px !important;
-    }
-    .back ion-button , .backIfRight ion-button{
-        height: 41px;
-      }
-      .next  {
-        bottom: 25%;
-        left: 5px;
     }
   }

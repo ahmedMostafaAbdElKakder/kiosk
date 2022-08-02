@@ -16,15 +16,14 @@ export class HomePage implements OnInit {
 
     lang = '2'
   ngOnInit(){
-    sessionStorage.setItem("lang" , this.lang)
-    // this.getItemById()
+    if(!localStorage.getItem('lang')){
+      localStorage.setItem("lang" , this.lang)
+      this.ifLang('2')
+    }else {
+      this.lang = localStorage.getItem('lang')
+      this.ifLang(this.lang)
+    }
   }
-
-  // getItemById(){
-  //   this.rest.GetItemsbyProductId(this.lang).subscribe(res => {
-  //     console.log("by id " , res)
-  //   })
-  // }
 
   gotToShop(){
     this.route.navigateByUrl('/main_menu')
@@ -32,6 +31,22 @@ export class HomePage implements OnInit {
 
   changeLang(lang){
     this.lang = lang
-    sessionStorage.setItem("lang" , this.lang)
+    localStorage.setItem("lang" , this.lang)
+    this.ifLang(this.lang)
+  }
+
+  title ;
+  takeOut
+  inShop
+  ifLang(langId){
+    if(langId == '2'){
+      this.title = "Where Will you be Eating Today"
+      this.takeOut = "Take Out"
+      this.inShop = "In Shop"
+    }else {
+      this.title = "أين ستأكل اليوم"
+      this.takeOut = "في الخارج"
+      this.inShop = "في المتجر"
+    }
   }
 }

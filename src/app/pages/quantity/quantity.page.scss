@@ -1,10 +1,15 @@
+.header{
+  text-align: center;
+  background: rgb(252, 180, 0)
+}
+
 ion-content{
   --background:#fff ;
   --color: black
 }
 ion-button {
-  --background: #c6c6c6;
-  --color: #fff; 
+  --background: #E1E1E1;
+  --color: #000; 
   text-transform: none;
 }
 
@@ -25,12 +30,18 @@ ion-button {
   font-size: 5vw;
   color: black
 }
-  .back {
-    text-align: right;
+.back {
+  text-align: right;
+}
+.backIfRight{
+  text-align: left;
+}
+
+  .back ,.backIfRight{
     text-transform: none;
     margin-top: 5px;
   }
-  .back ion-button{
+  .back ion-button , .backIfRight ion-button{
     --padding-start: 2em;
     --padding-end: 2em;
     --border-radius:5px;
@@ -47,16 +58,15 @@ ion-button {
       display: flex;
   }
   .orderInfo img {
-      width: 25%;
       margin-right: 10px;
       margin-left: 10px;
 
   }
   .orderInfo p {
-      font-size: 3vw;
+      font-size: 5vw;
   }
   .orderInfo span{
-    font-size: 3vw;
+    font-size: 4vw;
   }
   .ExtraName p {
     font-size: 4vw;
@@ -98,7 +108,7 @@ ion-button {
   }
   .footer {
     position: absolute;
-    bottom: 5px;
+    bottom: 1%;
     width: 100%
   }
   .footer div {
@@ -109,12 +119,19 @@ ion-button {
     width: 35%;
     font-size: 4vw;
     height: 120px;
+    
 
   }
   .cistomiz {
     --background: #000 ; color: #fff ;font-size:4vw;height: 91px;
   }
   @media only screen and (max-width:768px){
+    .orderInfo img {
+      width: 26%
+    }
+    .imgProduct{
+      width: 82px;
+    }
     .products img{
       height: 74px;
     }
@@ -145,6 +162,9 @@ ion-button {
       padding: 12px 59px;
     }
     .orderInfo p {
-      font-size: 2.5vw;
+      font-size: 4vw;
+    }
+    .back ion-button , .backIfRight ion-button{
+      height: 41px;
     }
   }

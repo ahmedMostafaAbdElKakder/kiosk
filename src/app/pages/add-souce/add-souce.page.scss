@@ -1,15 +1,16 @@
+.header{
+  text-align: center;
+  background: rgb(252, 180, 0)
+}
+
 ion-content{
     --background: #fff;
     --color: #000
 }
 ion-button {
-  --background: #c6c6c6;
-  --color: #fff; 
+  --background: #E1E1E1;
+  --color: #000; 
   text-transform: none;
-}
-img {
-  width: 17%;
-
 }
 .cover {
   position: absolute;
@@ -28,15 +29,22 @@ img {
   color: black
 }
   .imgProduct{
-    width:100%;
+    width:auto;
   }
 
   .back {
     text-align: right;
+  }
+  .backIfRight{
+    text-align: left;
+  }
+  
+  .back , .backIfRight{
+    text-align: right;
     text-transform: none;
     margin-top: 5px;
   }
-  .back ion-button{
+  .back ion-button , .backIfRight ion-button{
     --padding-start: 2em;
     --padding-end: 2em;
     --border-radius:5px;
@@ -67,14 +75,13 @@ img {
   }
 
   .addSouce ion-button {
-      --background: #fab328;
+      --background: rgb(252, 180, 0);
       color: #000;
       height: 135px;
       font-size: 5vw
   }
   .count {
     background: gainsboro;
-    width: 15%;
     height: 135px;
     display: flex;
     justify-content: center;
@@ -96,7 +103,7 @@ img {
   }
   .fotter {
       position: absolute;
-      bottom: 0 ;
+      bottom: 1%;
       width: 100%
   }
   .fotter div {
@@ -115,6 +122,12 @@ img {
 
   }
   @media only screen and (max-width:768px){
+    .orderName img {
+      width: 26%;
+    }
+    .imgProduct{
+      width: 82px;
+    }
     .products img{
       height: 74px;
     }
@@ -131,8 +144,12 @@ img {
     }
     .addSouce ion-button{
       height: 43px;
+      font-size: 4vw;
     }
     .count{
       height:43px;
+    }
+    .back ion-button , .backIfRight ion-button{
+      height: 41px;
     }
   }

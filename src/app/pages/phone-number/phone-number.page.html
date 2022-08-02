@@ -1,0 +1,15 @@
+<ion-content>
+  <ion-img class="logoImage" src="assets/images/logoFinal02.png"></ion-img>
+
+  <div class="container">
+
+    <form [formGroup]="register">
+      <ion-item>
+        <ion-label position="stacked">Customer Mobile</ion-label>
+        <ion-input type="text" maxlength="11" formControlName="mobileNumber"
+         placeholder="Enter Customer Mobile Number"></ion-input>
+      </ion-item>
+      <ion-button class="btn" (click)="next()">Continue</ion-button>
+    </form>
+  </div>
+</ion-content>

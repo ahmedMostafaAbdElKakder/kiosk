@@ -18,7 +18,7 @@ export class OrderNumberPage implements OnInit {
      private rest : RestService) { }
 
   ngOnInit() {
-    this.langId =  sessionStorage.getItem("lang")
+    this.langId = localStorage.getItem("lang")
     this.orderNumber = sessionStorage.getItem('numberOfOrder')
     if(this.langId == '1'){
       this.OrderDone = "الرئيسية"

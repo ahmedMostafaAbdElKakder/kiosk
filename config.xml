@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Dunkin</name>
+<widget id="android.debugtwo.App2" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Kiosk</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
@@ -25,12 +25,12 @@
         </edit-config>
         <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <allow-intent href="market:*" />
-        <icon density="ldpi" src="resources/android/icon/DunkinLogo.png" />
-        <icon density="mdpi" src="resources/android/icon/DunkinLogo.png" />
-        <icon density="hdpi" src="resources/android/icon/DunkinLogo.png" />
-        <icon density="xhdpi" src="resources/android/icon/DunkinLogo.png" />
-        <icon density="xxhdpi" src="resources/android/icon/DunkinLogo.png" />
-        <icon density="xxxhdpi" src="resources/android/icon/DunkinLogo.png" />
+        <icon density="ldpi" src="resources/android/icon/logo.png" />
+        <icon density="mdpi" src="resources/android/icon/logo.png" />
+        <icon density="hdpi" src="resources/android/icon/logo.png" />
+        <icon density="xhdpi" src="resources/android/icon/logo.png" />
+        <icon density="xxhdpi" src="resources/android/icon/logo.png" />
+        <icon density="xxxhdpi" src="resources/android/icon/logo.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

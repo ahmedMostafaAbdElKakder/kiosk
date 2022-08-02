@@ -1,8 +1,8 @@
 ion-content{
-  --background: #212121;
+  --background:rgb(60, 60, 59);
 }
 ion-button {
-  --background: #c6c6c6;
+  --background: #E1E1E1;
   --color: black; 
   text-transform: none;
 }
@@ -38,7 +38,8 @@ ion-button {
   .title h1 {
     font-size: 5vw;
     color: #fff;
-    margin-top: 0;
+    margin-top: -5%;
+    margin-bottom: 10%;
   }
   .product{
     border: 10px solid #e6e3e3;
@@ -54,7 +55,7 @@ ion-button {
     margin: 30px auto;
   }
   .product .button{
-    --background:#fab328; 
+    --background: rgb(252,180,0);
     text-transform: none;
     height: 112px;
     font-size: 4vw;
@@ -77,6 +78,12 @@ ion-button {
   .footer .lang{
     background: gray;
     margin-right: 12px;
+  }
+
+  .block{
+    width:100% !important;
+    height: 100vh !important;
+    background: gray !important
   }
   @media only screen and (max-width:768px){
     .back ion-button{

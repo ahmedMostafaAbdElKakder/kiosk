@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/rest.service';
-import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Location } from "@angular/common";
+
 
 @Component({
-  selector: 'app-categoris',
-  templateUrl: './categoris.page.html',
-  styleUrls: ['./categoris.page.scss'],
+  selector: 'app-discount',
+  templateUrl: './discount.page.html',
+  styleUrls: ['./discount.page.scss'],
 })
-export class CategorisPage implements OnInit {
-
-  categoris
+export class DiscountPage implements OnInit {
   categoriObj;
   nameOfCat;
   items = []
@@ -27,13 +26,11 @@ export class CategorisPage implements OnInit {
   MyOrder
   Modfires
   Next
+  categoris = []
   bestSelling;
   discount;
   promotions
-  LE
-  constructor(private rest: RestService,
-    private route :Router,
-     private navCtr: NavController) { }
+  constructor(private rest : RestService ,  private route :Router,private location: Location) { }
 
   ngOnInit() {
     this.langId = localStorage.getItem('lang')
@@ -49,8 +46,6 @@ export class CategorisPage implements OnInit {
       this.bestSelling = "افضل المنتجات"
       this.discount = "الخصومات"
       this.promotions = "العروض"
-      this.LE = "جنيه"
-
     }else {
       this.dir = "ltr"
       this.Menu = "Main Menu"
@@ -58,17 +53,32 @@ export class CategorisPage implements OnInit {
       this.Cancel = "Cancel Order"
       this.OrderDone = "Done"
       this.MyOrder = "My Order - In Shop"
-      this.Modfires = "Modifiers"
+      this.Modfires = "Modfires"
       this.Next = "Next"
       this.bestSelling = "Best Selling"
       this.discount = "Discount"
       this.promotions ="Promotion"
-      this.LE = "LE"
-
     }
     this.getData()
     this.getCategoris()
     this.ifArrOfModfier()
+  }
+
+  getData() {
+    this.categoriObj = JSON.parse(sessionStorage.getItem('obj'))
+    console.log(this.categoriObj)
+    this.nameOfCat = this.categoriObj.Name
+    this.items = this.categoriObj.Products
+    // for (let i = 0; i < this.items.length; i++) {
+    //   if(this.items[i].DiscountAmount == "10 %"){
+    //     this.items[i].PriceAfterDiscount = this.items[i].Price - (this.items[i].Price / 10)
+    //   }
+    //   if (i == 2 || i == 5 || i == 8 || i == 11) {
+    //     this.items[i].status = true
+    //   } else {
+    //     this.items[i].status = false
+    //   }
+    // }
   }
 
   getCategoris() {
@@ -84,21 +94,7 @@ export class CategorisPage implements OnInit {
       }
     })
   }
-
-  getData() {
-    this.categoriObj = JSON.parse(sessionStorage.getItem('obj'))
-    console.log(this.categoriObj)
-    this.nameOfCat = this.categoriObj.Name
-    this.items = this.categoriObj.Products
-    for (let i = 0; i < this.items.length; i++) {
-      if (i == 2 || i == 5 || i == 8 || i == 11) {
-        this.items[i].status = true
-      } else {
-        this.items[i].status = false
-      }
-    }
-  }
-
+  
   idOfIngrdtiont;
   GetModifiresbyProductId(item , id) {
     this.idOfIngrdtiont = id
@@ -127,6 +123,33 @@ export class CategorisPage implements OnInit {
       }
     })
   }
+
+  // GetModifiresbyProductId(item , id) {
+  //   sessionStorage.setItem('ProductOfChose', JSON.stringify(item))
+  //   this.price = item.Price
+  //   this.rest.GetModifiresbyProductId(id,this.langId).subscribe((res: any) => {
+  //     console.log(res)
+  //     if(res.length != 0){
+  //       this.showModfire = true
+  //       this.ModifiresbyProductId = res
+  //     }else {
+  //       this.rest.GetItemsbyProductId(this.langId,id).subscribe((res : any) => {
+  //         if(res.length == 0){
+  //           let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
+  //           let item:any = {}
+  //           item.ingridtArr = []
+  //           item.Prdoucts = [products]
+  //           item.Modfire = []
+  //           sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
+  //           this.route.navigateByUrl('/quantity')
+  //         }else {
+  //           this.gotToDetails('normal')
+  //         }
+  //       })
+  //     }
+  //   })
+  // }
+
   close() {
     this.showModfire = false
   }
@@ -152,6 +175,17 @@ export class CategorisPage implements OnInit {
 
   }
 
+  // gotToDetails(item) {
+  //   if(item == "normal"){
+  //     this.route.navigateByUrl('/add-souce')
+  //     let empty = {}
+  //     sessionStorage.setItem('ModfireOfChose', JSON.stringify(empty))
+  //     sessionStorage.setItem("ifModFire",'false')
+  //   }else {
+  //     sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
+  //     this.route.navigateByUrl('/add-souce')
+  //   }
+  // }
   gotToDetails(item) {
     if(item == "normal"){
       this.rest.GetItemsbyProductId(this.langId,this.idOfIngrdtiont).subscribe((res : any) => {
@@ -170,18 +204,7 @@ export class CategorisPage implements OnInit {
       let empty = {}
       sessionStorage.setItem('ModfireOfChose', JSON.stringify(empty))
       sessionStorage.setItem("ifModFire",'false')
-    } else if (item == 'Discount'){
-      this.rest.gitDiscount(this.langId).subscribe((res: any) => {
-        console.log(res)
-        let obj = {
-          Name : 'Discount',
-          Products : res
-        }
-        sessionStorage.setItem('obj', JSON.stringify(obj))
-        this.route.navigateByUrl('/discount')
-
-      })
-    }
+    } 
     else {
       console.log("asdasdsa",item)
       this.rest.GetItemsbyProductId(this.langId,this.idOfIngrdtiont).subscribe((res : any) => {
@@ -200,14 +223,16 @@ export class CategorisPage implements OnInit {
     }
 
   }
+
+  
   prdouct
   price
   ChoseCategori(item){
     sessionStorage.setItem("obj",JSON.stringify(item))
-    this.getData()
+    this.route.navigateByUrl('/categoris')
   }
   goBack(){
-    this.route.navigateByUrl('/main_menu')
+    this.location.back();
   }
   cancelOrder(){
     sessionStorage.clear()

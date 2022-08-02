@@ -47,6 +47,22 @@ const routes: Routes = [
     path: 'order-number',
     loadChildren: () => import('./pages/order-number/order-number.module').then( m => m.OrderNumberPageModule)
   },
+  {
+    path: 'discount',
+    loadChildren: () => import('./pages/discount/discount.module').then( m => m.DiscountPageModule)
+  },
+  {
+    path: 'promtions',
+    loadChildren: () => import('./pages/promtions/promtions.module').then( m => m.PromtionsPageModule)
+  },
+  {
+    path: 'prom-details',
+    loadChildren: () => import('./pages/prom-details/prom-details.module').then( m => m.PromDetailsPageModule)
+  },
+  {
+    path: 'phone-number',
+    loadChildren: () => import('./pages/phone-number/phone-number.module').then( m => m.PhoneNumberPageModule)
+  },
 ];
 
 @NgModule({

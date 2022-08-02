@@ -1,36 +1,31 @@
-<ion-header>
-  <div>
-    <img class="imgProduct" src="assets/images/panner.jpeg">
-  </div>
-  <div *ngIf="showCover" class="cover">
-    <h1>coffee</h1>
-  </div>
-</ion-header>
+<div class="header">
+  <img class="imgProduct " src="assets/images/kiosk.png">
+</div>
 
 <ion-content [dir]="dir">
-  <div class="ion-padding-start">
-
-    <div class="back">
-      <p>{{Menu}}</p>
+  <div class="">
+    <div  [ngClass]="{'back':dir == 'ltr', 'backIfRight':dir == 'rtl'}">
       <ion-button (click)="goBack()">{{Back}}</ion-button>
     </div>
 
     <section class="Content">
-      <ion-grid>
+      <ion-grid style="padding: 0">
         <ion-row>
-          <ion-col size="3" class="navgation" style="margin-top: -20px ;">
+          <ion-col  size="3" class="navgation">
+              <p class="mainMenu"> {{Menu}} </p>
             <div>
-              <div (click)="gotToSugg()" class="menuItem">
-                <img src="assets/images/best.png">
-                <p>Best Selling</p>
+              <!-- (click)="gotToSugg()"  -->
+              <div class="menuItem">
+                <img src="assets/images/mostSelling.png">
+                <p>{{bestSelling}}</p>
               </div>
-              <div  class="menuItem">
-                <img src="assets/images/best.png">
-                <p>Discount</p>
+              <div class="menuItem" (click)="gotToDetails('Discount')">
+                <img src="assets/images/discount.png">
+                <p>{{discount}}</p>
               </div>
-              <div  class="menuItem">
-                <img src="assets/images/best.png">
-                <p>Promotion</p>
+              <div  class="menuItem" routerLink="/promtions">
+                <img src="assets/images/promotion.png">
+                <p>{{promotions}}</p>
               </div>
               <div *ngFor="let item of categoris" class="menuItem" (click)="gotToDetails(item)">
                 <img src="{{item.Image}}">
@@ -43,24 +38,25 @@
               <ion-grid>
                 <ion-row>
                   <ion-col size="4" class="rowOne colOne">
-                    <div (click)="gotToSugg()">
-                      <img src="assets/images/best.png">
-                      <p class="name">Best Selling</p>
+                    <div >
+                      <img src="assets/images/mostSelling.png">
+                      <p class="name">{{bestSelling}}</p>
                     </div>
                   </ion-col>
                   <ion-col size="4" class="rowOne colOne">
-                    <div (click)="gotToSugg()">
-                      <img src="assets/images/best.png">
-                      <p class="name">Promotion</p>
+                    <div (click)="gotToDetails('Discount')">
+                      <img src="assets/images/discount.png">
+                      <p class="name">{{discount}}</p>
                     </div>
                   </ion-col>
                   <ion-col size="4" class="rowOne colOne">
-                    <div (click)="gotToSugg()">
-                      <img src="assets/images/best.png">
-                      <p class="name">Discount</p>
+                    <div routerLink="/promtions">
+                      <img src="assets/images/promotion.png">
+                      <p class="name">{{promotions}}</p>
                     </div>
                   </ion-col>
-                  <ion-col size="4" class="rowOne" [ngClass]="{'colOne':item.status == false}"
+                  <!-- [ngClass]="{'colOne':item.status == false}" -->
+                  <ion-col size="4" class="rowOne colOne" 
                     *ngFor="let item of categoris ; let i = index" (click)="gotToDetails(item)">
                     <img src="{{item.Image}}">
                     <p class="name">{{item.Name}}</p>
@@ -80,7 +76,7 @@
     </div>
     <div class="foter">
       <p>{{arrOfModLength}}</p>
-      <div class="confirmOrCancel">
+      <div class="confirmOrCancel" dir="ltr">
         <ion-button (click)="cancelOrder()" [disabled]="disalbedButton">{{Cancel}}</ion-button>
         <ion-button (click)="Done()" [disabled]='disalbedButton'>{{OrderDone}}</ion-button>
       </div>

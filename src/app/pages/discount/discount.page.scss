@@ -1,7 +1,12 @@
-
 .header{
     text-align: center;
     background: rgb(252, 180, 0)
+}
+ion-header div{
+    text-align: center
+}
+ion-header img {
+    width: 120px;
 }
 ion-button {
     --background: #E1E1E1;
@@ -38,25 +43,28 @@ ion-button {
       font-size: 5vw;
       color: black
   }
+  
   .back {
     text-align: right;
   }
   .backIfRight{
     text-align: left;
   }
-  .back p , .backIfRight P{
-      font-weight: bold;
-      font-size: 5vw;
-  }
-  .back ion-button , .backIfRight ion-button{
+
+
+  .back ion-button{
     --padding-start: 2em;
     --padding-end: 2em;
     --border-radius:5px;
-    margin-top: 2%;
+    margin-top: 5%;
     font-size: 5vw;
     height: auto;
-    margin-bottom: 5%;
-    height: 100px;
+    margin-bottom:3%;
+    height: 36px;
+  }
+  .back p {
+      font-weight: bold;
+      font-size: 5vw
   }
   .products{
     text-align: center;
@@ -75,13 +83,13 @@ ion-button {
 .products .rowOne{
     border-bottom: 1px solid #c2c2c2;
 }
-.colOne{
+.products .colOne{
     border-right: 1px solid #c2c2c2;
 }
 .menuItem{
     padding: 30px 0;
     border-bottom: 1px solid #c2c2c2;
-
+    text-align: center
 }
 .menuItem p{
     margin: 0;
@@ -89,18 +97,29 @@ ion-button {
     text-align: center;
     font-weight: bold;
     font-size: 3vw;
-
 }
 .menuItem img {
-    width: 220px;
     height: 200px;
 }
+
 .price_name{
     display: flex;
     justify-content: space-between;
-    font-size: 10px;
     margin-top: 10px;
     font-size: 3vw
+}
+.nameOfPrdocuct{
+    font-size: 3vw
+}
+.price_name .after {
+    margin-left: 17px;
+}
+.price_name .after span{
+    color: red
+}
+.price_name .befor {
+    margin-right: 17px;
+    
 }
 .myOrder{
     background: #E1E1E1;
@@ -127,8 +146,7 @@ ion-button {
 .footer {
     position: absolute;
     width: 100%;
-    bottom: 1%
-
+    bottom:0;
 }
 .recmoended p{
     margin: 0;
@@ -137,20 +155,10 @@ ion-button {
 }
 
 .menu{
+    height: 65vh;
     overflow-y: scroll;
-    border-radius: 5px;
-    margin-top: -17%;
-    background: #f0f0f0;
-    height: 72vh;
-    text-align: center;
-}
-.menu div {
-    border-bottom: 1px solid gray;
-}
-.menu .mainMenu{
-    font-size: 3rem;
-    font-weight: bold;
-    margin-top: 50%;
+    background: #e7e7e7;
+    margin-top: -18%;
 }
 .products{
     height: 52vh;
@@ -167,7 +175,7 @@ ion-button {
 }
 
 .recmoended ion-button{
-   --background: #E1E1E1;
+   --background: #c6c6c6;
    font-size: 5vw;
    height: auto;;
    
@@ -188,11 +196,17 @@ ion-button {
 }
 .next {
     position: absolute;
-    bottom: 24%;
+    bottom:24%;
     height: 100px !important;
     left: 14px;
-    --background: rgb(252, 180, 0)!important;
+    --background: #e1e1e1 !important;
     color: #000
+}
+.mainMenu{
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 50%;
+    text-align: center
 }
 // .nextModfire {
 //     height: 100px;
@@ -204,30 +218,19 @@ ion-button {
 
 @media only screen and (max-width:768px){
     .imgProduct{
-        height: 71px;
-    }
-    .menu {
-        height: 67vh;
-        margin-top: -19%;
-    }
-    .menuItem{
-        padding: 12px 0;
-    }
-    .menuItem img {
-        height: 50px;
-        width: auto
-    }
-    .back ion-button{
-        height: 36px;
-    }
-    .menu .mainMenu{
-        font-size: 13px;
+        width: 81px;
     }
     .products img{
-        width: auto;
-        height: 90px;
-        
+      height: 74px;
+      width: auto
     }
+
+    .menuItem img{
+        height: 50px;
+      }
+      .menuItem{
+        padding: 15px 0;
+      }
     .confirmOrCancel ion-button{
       height: 44px;
     }
@@ -235,16 +238,13 @@ ion-button {
         height:10vh !important;
     }
     .cover2{
-        height:23vh;
+        height: 30vh;
     }
     .next {
         height: 36px !important;
+        --background: #e1e1e1 !important;
     }
-    .back ion-button , .backIfRight ion-button{
-        height: 41px;
-      }
-      .next  {
-        bottom: 25%;
-        left: 5px;
+    .mainMenu{
+        font-size: 13px;
     }
   }

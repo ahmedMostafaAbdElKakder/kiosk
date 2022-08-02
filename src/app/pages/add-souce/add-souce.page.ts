@@ -22,24 +22,27 @@ export class AddSoucePage implements OnInit {
   addChange
   dir
   ingrdtiont;
+  LE
   constructor(private rest: RestService,
     private route: Router,
     private navCtr: NavController) { }
 
   ngOnInit() {
-    this.langId = sessionStorage.getItem("lang")
+    this.langId = localStorage.getItem("lang")
     if (this.langId == '1') {
       this.dir = 'rtl'
       this.Back = "رجوع"
       this.Cancel = "إلغاء"
       this.addChange = "اضف المتغيرات"
       this.ingrdtiont = "الاضافات"
+      this.LE = "جنيه"
     } else {
-      this.dir = 'trl'
+      this.dir = 'ltr'
       this.Back = "Back"
       this.Cancel = "Cancel"
       this.addChange = "Apply Changes"
       this.ingrdtiont = "Ingredients"
+      this.LE = "LE"
     }
     this.getData()
   }

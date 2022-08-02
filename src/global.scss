@@ -28,9 +28,30 @@
 .header-md::after{
     background: none
 }
-.imgProduct{
-    height: 100% !important;
-}
+// .imgProduct{
+//     height: 100% !important;
+// }
 .cover{
     height: 100% !important;
+}
+ion-spinner {
+    transform: scale(3);
+    width: 170px;
+}
+.sc-ion-loading-md-h{
+    --max-width: auto;
+    --max-height: auto;
+    font-size: 5rem;
+}
+
+@media only screen and (max-width:768px){
+    ion-spinner {
+        transform: scale(1);
+        width: 44px;
+    }
+    .sc-ion-loading-md-h{
+        --max-width: auto;
+        --max-height: auto;
+        font-size: 1rem;
+    } 
 }
