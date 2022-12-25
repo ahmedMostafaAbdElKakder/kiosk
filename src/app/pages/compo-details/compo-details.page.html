@@ -1,0 +1,59 @@
+<div class="header">
+  <img class="imgProduct " src="assets/images/kiosk.png">
+</div>
+
+<ion-content [dir]="dir">
+
+  <div class="back" [ngClass]="{'back':dir == 'ltr','backIfRight':dir == 'rtl'}">
+    <ion-button  (click)="goBack()">{{Back}}</ion-button>
+  </div>
+  
+
+  <div class="product">
+    <img class="imgProduct" src="{{image}}">
+    <p class="nameAndDesc">
+      <span>{{name}}</span><br>
+      {{desc}}
+    </p>
+  </div>
+
+  <!-- [ngClass]="{'ifClick' : item.status == true}" -->
+  <section class="mainSecion">
+    <h3>{{SelectSize}}</h3>
+    <div class=" ifClick"  *ngFor="let item of arrayOfProducts" >
+      <div class="size">
+          <div class="itemOfSize" >
+              <p class="itemSize">{{item.SizeName[0]}}</p>
+              <div>
+                <div *ngFor="let product of item.products">
+                  <p class="nameOfProduct">
+                    {{product.Name}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p class="price"> {{item.totalPrice}} {{LE}}</p>
+      </div>
+      <div class="quantity">
+          <div class="plus" >
+            <div>
+              <ion-button  (click)="plus(item)">+</ion-button>
+              <div class="count">
+                <p>{{item.count}}</p>
+                <ion-button  (click)="minus(item)">-</ion-button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+ 
+
+    <div class="footer" dir="ltr">
+        <div>
+          <ion-button (click)="cancel()">{{Cancel}}</ion-button>
+          <ion-button (click)="addOrder()" [disabled]="!ifCount" >{{addChange}}</ion-button>
+        </div>
+      </div>
+</ion-content>

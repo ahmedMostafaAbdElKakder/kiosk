@@ -30,6 +30,9 @@ export class DiscountPage implements OnInit {
   bestSelling;
   discount;
   promotions
+  Compo
+  Befor
+  After
   constructor(private rest : RestService ,  private route :Router,private location: Location) { }
 
   ngOnInit() {
@@ -46,6 +49,9 @@ export class DiscountPage implements OnInit {
       this.bestSelling = "افضل المنتجات"
       this.discount = "الخصومات"
       this.promotions = "العروض"
+      this.Compo = "كومبو"
+      this.After = "بعد"
+      this.Befor = "قبل"
     }else {
       this.dir = "ltr"
       this.Menu = "Main Menu"
@@ -58,6 +64,9 @@ export class DiscountPage implements OnInit {
       this.bestSelling = "Best Selling"
       this.discount = "Discount"
       this.promotions ="Promotion"
+      this.Compo = "Combo"
+      this.After = "After"
+      this.Befor = "Befor"
     }
     this.getData()
     this.getCategoris()
@@ -84,7 +93,7 @@ export class DiscountPage implements OnInit {
   getCategoris() {
     this.rest.getCategoriWithProduct(this.langId).subscribe((res: any) => {
       console.log(res)
-      this.categoris = res
+      this.categoris = res.categoriesProducts
       for (let i = 0; i < this.categoris.length; i++) {
         if (i == 2 || i == 5 || i == 8 || i == 11) {
           this.categoris[i].status = true
@@ -96,31 +105,96 @@ export class DiscountPage implements OnInit {
   }
   
   idOfIngrdtiont;
-  GetModifiresbyProductId(item , id) {
+  // GetModifiresbyProductId(item , id) {
+  //   this.idOfIngrdtiont = id
+  //   sessionStorage.setItem('ProductOfChose', JSON.stringify(item))
+  //   this.price = item.Price
+  //   this.rest.GetModifiresbyProductId(id,this.langId).subscribe((res: any) => {
+  //     console.log(res)
+  //     if(res.length != 0){
+  //       console.log("hello")
+  //       this.showModfire = true
+  //       this.ModifiresbyProductId = res
+  //     }else {
+  //       this.rest.GetItemsbyProductId(this.langId,id).subscribe((res : any) => {
+  //         if(res.length == 0){
+  //           let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
+  //           let item:any = {}
+  //           item.ingridtArr = []
+  //           item.Prdoucts = [products]
+  //           item.Modfire = []
+  //           sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
+  //           this.route.navigateByUrl('/quantity')
+  //         }else {
+  //           this.gotToDetails('normal')
+  //         }
+  //       })
+  //     }
+  //   })
+  // }
+  // GetModifiresbyProductId(item, id) {
+  //   this.idOfIngrdtiont = id
+  //   sessionStorage.setItem('ProductOfChose', JSON.stringify(item))
+  //   this.price = item.Price
+  //   this.rest.GetModifiresbyProductId(id, this.langId).subscribe((res: any) => {
+  //     console.log(res)
+  //     if (res.length != 0) {
+  //       sessionStorage.setItem('modfiresArr', JSON.stringify(res))
+  //       this.route.navigateByUrl('/add-modfires')
+  //     } else {
+  //       this.rest.GetItemsbyProductId(this.langId, id).subscribe((res: any) => {
+  //         if (res.length == 0) {
+  //           let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
+  //           console.log("hamdaaaa")
+  //           let item: any = {}
+  //           item.ingridtArr = []
+  //           item.Prdoucts = [products]
+  //           item.modfire = []
+  //           sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
+  //           this.route.navigateByUrl('/quantity')
+  //         } else {
+  //           this.gotToDetails('normal')
+  //         }
+  //       })
+  //     }
+  //   })
+  // }
+  GetModifiresbyProductId(item, id) {
     this.idOfIngrdtiont = id
     sessionStorage.setItem('ProductOfChose', JSON.stringify(item))
     this.price = item.Price
-    this.rest.GetModifiresbyProductId(id,this.langId).subscribe((res: any) => {
+    this.rest.GetModifiresbyProductId(id, this.langId).subscribe((res: any) => {
       console.log(res)
-      if(res.length != 0){
-        console.log("hello")
-        this.showModfire = true
-        this.ModifiresbyProductId = res
-      }else {
-        this.rest.GetItemsbyProductId(this.langId,id).subscribe((res : any) => {
-          if(res.length == 0){
-            let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
-            let item:any = {}
+      if (res.length == 0) {
+        let arr = []
+        sessionStorage.setItem('modfiresArr', JSON.stringify(arr))
+        // this.route.navigateByUrl('/add-modfires')
+      } else {
+        sessionStorage.setItem('modfiresArr', JSON.stringify(res))
+      }
+        this.rest.GetItemsbyProductId(this.langId, id).subscribe((res: any) => {
+          let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
+          if (res.length == 0) {
+            console.log("hamdaaaa")
+            let item: any = {}
             item.ingridtArr = []
             item.Prdoucts = [products]
-            item.Modfire = []
+            item.modfire = []
+            sessionStorage.setItem('IngrdDub', JSON.stringify([]))
             sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
             this.route.navigateByUrl('/quantity')
-          }else {
-            this.gotToDetails('normal')
+          } else {
+            let item: any = {}
+            item.ingridtArr = []
+            item.Prdoucts = [products]
+            item.modfire = []
+            sessionStorage.setItem('IngrdDub', JSON.stringify(res))
+            sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
+            this.route.navigateByUrl('/quantity')
+            // this.gotToDetails('normal')
           }
         })
-      }
+      
     })
   }
 
@@ -186,35 +260,85 @@ export class DiscountPage implements OnInit {
   //     this.route.navigateByUrl('/add-souce')
   //   }
   // }
+  // gotToDetails(item) {
+  //   if(item == "normal"){
+  //     this.rest.GetItemsbyProductId(this.langId,this.idOfIngrdtiont).subscribe((res : any) => {
+  //       if(res.length == 0){
+  //         let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
+  //         let item:any = {}
+  //         item.ingridtArr = []
+  //         item.Prdoucts = [products]
+  //         item.Modfire = []
+  //         sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
+  //         this.route.navigateByUrl('/quantity')
+  //       }else {
+  //         this.route.navigateByUrl('/add-souce')
+  //       }
+  //     })
+  //     let empty = {}
+  //     sessionStorage.setItem('ModfireOfChose', JSON.stringify(empty))
+  //     sessionStorage.setItem("ifModFire",'false')
+  //   } 
+  //   else {
+  //     console.log("asdasdsa",item)
+  //     this.rest.GetItemsbyProductId(this.langId,this.idOfIngrdtiont).subscribe((res : any) => {
+  //       if(res.length == 0){
+  //         let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
+  //         item.ingridtArr = []
+  //         item.Prdoucts = [products]
+  //         sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
+  //         this.route.navigateByUrl('/quantity')
+  //       }else {
+  //         sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
+
+  //         this.route.navigateByUrl('/add-souce')
+  //       }
+  //     })
+  //   }
+
+  // }
   gotToDetails(item) {
-    if(item == "normal"){
-      this.rest.GetItemsbyProductId(this.langId,this.idOfIngrdtiont).subscribe((res : any) => {
-        if(res.length == 0){
-          let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
-          let item:any = {}
+    if (item == "normal") {
+      let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
+      this.rest.GetItemsbyProductId(this.langId, this.idOfIngrdtiont).subscribe((res: any) => {
+        if (res.length == 0) {
+          let item: any = {}
           item.ingridtArr = []
           item.Prdoucts = [products]
-          item.Modfire = []
+          item.modfire = []
           sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
           this.route.navigateByUrl('/quantity')
-        }else {
+        } else {
+          let item: any = {}
+          item.Prdoucts = [products]
+          item.modfire = []
+          sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
           this.route.navigateByUrl('/add-souce')
         }
       })
-      let empty = {}
-      sessionStorage.setItem('ModfireOfChose', JSON.stringify(empty))
-      sessionStorage.setItem("ifModFire",'false')
-    } 
+  
+      sessionStorage.setItem("ifModFire", 'false')
+    } else if (item == 'Discount') {
+      this.rest.gitDiscount(this.langId).subscribe((res: any) => {
+        console.log(res)
+        let obj = {
+          Name: 'Discount',
+          Products: res
+        }
+        sessionStorage.setItem('obj', JSON.stringify(obj))
+        this.route.navigateByUrl('/discount')
+      })
+    }
     else {
-      console.log("asdasdsa",item)
-      this.rest.GetItemsbyProductId(this.langId,this.idOfIngrdtiont).subscribe((res : any) => {
-        if(res.length == 0){
+      console.log("asdasdsa", item)
+      this.rest.GetItemsbyProductId(this.langId, this.idOfIngrdtiont).subscribe((res: any) => {
+        if (res.length == 0) {
           let products = JSON.parse(sessionStorage.getItem('ProductOfChose'))
           item.ingridtArr = []
           item.Prdoucts = [products]
           sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
           this.route.navigateByUrl('/quantity')
-        }else {
+        } else {
           sessionStorage.setItem('ModfireOfChose', JSON.stringify(item))
 
           this.route.navigateByUrl('/add-souce')

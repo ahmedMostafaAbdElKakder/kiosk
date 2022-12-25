@@ -65,6 +65,9 @@ ion-button {
       margin-left: 5px;
       font-size: 5vw
   }
+  .orderName img {
+    max-width:250px
+  }
   .order .parg{
     font-size: 5vw
   }
@@ -119,6 +122,8 @@ ion-button {
     margin-top: 18px;
     margin-bottom: 18px;
     font-size: 7vw;
+    margin-left: 10px;
+    margin-right: 10px;
 
   }
   @media only screen and (max-width:768px){

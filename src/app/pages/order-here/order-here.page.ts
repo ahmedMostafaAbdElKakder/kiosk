@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform, IonRouterOutlet } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { App } from '@capacitor/app';
 
 @Component({
   selector: 'app-order-here',
@@ -9,12 +10,21 @@ import { Router } from '@angular/router';
 })
 export class OrderHerePage implements OnInit {
 
-  constructor(private navCtr : NavController , private route :Router) { }
+  constructor(private navCtr : NavController ,
+    private platform: Platform,
+    private routerOutlet: IonRouterOutlet,
+     private route :Router) {
+      this.platform.backButton.subscribeWithPriority(99999, () => {
+        if (this.routerOutlet.canGoBack()) {
+          App.exitApp();
+        }
+      });
+      }
 
   ngOnInit() {
   }
 
   geOeder(){
-    this.route.navigateByUrl('/phone-number')
+    this.route.navigateByUrl('/home')
   }
 }

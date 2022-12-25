@@ -26,6 +26,7 @@ export class PromtionsPage implements OnInit {
   bestSelling;
   discount;
   promotions
+  Compo
   ngOnInit() {
 
      this.langId = localStorage.getItem('lang')
@@ -39,6 +40,7 @@ export class PromtionsPage implements OnInit {
       this.bestSelling = "افضل المنتجات"
       this.discount = "الخصومات"
       this.promotions = "العروض"
+      this.Compo = "كومبو"
     } else {
       this.dir = "ltr"
       this.Menu = "Main Menu"
@@ -49,6 +51,7 @@ export class PromtionsPage implements OnInit {
       this.bestSelling = "Best Selling"
       this.discount = "Discount"
       this.promotions ="Promotion"
+      this.Compo = "Combo"
     }
     this.getCategoris()
     this.ifArrOfModfier()
@@ -70,7 +73,7 @@ export class PromtionsPage implements OnInit {
   getCategoris() {
     this.rest.getCategoriWithProduct(this.langId).subscribe((res: any) => {
       console.log(res)
-      this.categoris = res
+      this.categoris = res.categoriesProducts
       for (let i = 0; i < this.categoris.length; i++) {
         if (i == 1 || i == 4 || i == 7 || i == 10) {
           this.categoris[i].status = true

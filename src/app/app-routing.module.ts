@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'order-here',
+    redirectTo: 'get-breanch',
     pathMatch: 'full'
   },
   {
@@ -62,6 +62,38 @@ const routes: Routes = [
   {
     path: 'phone-number',
     loadChildren: () => import('./pages/phone-number/phone-number.module').then( m => m.PhoneNumberPageModule)
+  },
+  {
+    path: 'add-modfires',
+    loadChildren: () => import('./pages/add-modfires/add-modfires.module').then( m => m.AddModfiresPageModule)
+  },
+  {
+    path: 'compo',
+    loadChildren: () => import('./pages/compo/compo.module').then( m => m.CompoPageModule)
+  },
+  {
+    path: 'compo-details',
+    loadChildren: () => import('./pages/compo-details/compo-details.module').then( m => m.CompoDetailsPageModule)
+  },
+  {
+    path: 'get-breanch',
+    loadChildren: () => import('./pages/get-breanch/get-breanch.module').then( m => m.GetBreanchPageModule)
+  },
+  {
+    path: 'chose-branch',
+    loadChildren: () => import('./pages/chose-branch/chose-branch.module').then( m => m.ChoseBranchPageModule)
+  },
+  {
+    path: 'choose-combo',
+    loadChildren: () => import('./pages/choose-combo/choose-combo.module').then( m => m.ChooseComboPageModule)
+  },
+  {
+    path: 'customize',
+    loadChildren: () => import('./pages/customize/customize.module').then( m => m.CustomizePageModule)
+  },
+  {
+    path: 'edit-customiz',
+    loadChildren: () => import('./pages/edit-customiz/edit-customiz.module').then( m => m.EditCustomizPageModule)
   },
 ];
 

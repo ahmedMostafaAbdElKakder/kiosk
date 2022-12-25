@@ -3,6 +3,7 @@ import { RestService } from 'src/app/rest.service';
 import { NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-main-menu',
   templateUrl: './main-menu.page.html',
@@ -25,11 +26,15 @@ export class MainMenuPage implements OnInit {
   bestSelling;
   discount;
   promotions
+  Compo
+  subscription2: Subscription;
   constructor(private rest: RestService,
     private route: Router,
     private navCtr: NavController) { }
 
   ngOnInit() {
+
+  
     this.langId = localStorage.getItem('lang')
     if (this.langId == '1') {
       this.dir = "rtl"
@@ -41,6 +46,7 @@ export class MainMenuPage implements OnInit {
       this.bestSelling = "افضل المنتجات"
       this.discount = "الخصومات"
       this.promotions = "العروض"
+      this.Compo = "كومبو"
     } else {
       this.dir = "ltr"
       this.Menu = "Main Menu"
@@ -51,6 +57,7 @@ export class MainMenuPage implements OnInit {
       this.bestSelling = "Best Selling"
       this.discount = "Discount"
       this.promotions ="Promotion"
+      this.Compo = "Combo"
     }
     this.getCategoris()
     this.ifArrOfModfier()
@@ -71,14 +78,23 @@ export class MainMenuPage implements OnInit {
   getCategoris() {
     this.rest.getCategoriWithProduct(this.langId).subscribe((res: any) => {
       console.log(res)
-      this.categoris = res
-      for (let i = 0; i < this.categoris.length; i++) {
-        if (i == 1 || i == 4 || i == 7 || i == 10) {
-          this.categoris[i].status = true
-        } else {
-          this.categoris[i].status = false
+      if(res.StatusId == 3){
+        this.categoris = res.categoriesProducts
+        for (let i = 0; i < this.categoris.length; i++) {
+          if (i == 1 || i == 4 || i == 7 || i == 10) {
+            this.categoris[i].status = true
+          } else {
+            this.categoris[i].status = false
+          }
         }
+      }else if (res.StatusId == 5){
+        this.route.navigateByUrl('/get-breanch')
+        this.rest.sendStatusOfBranch("5")
+      }else if (res.StatusId == 4) {
+        this.route.navigateByUrl('/get-breanch')
+        this.rest.sendStatusOfBranch("4")
       }
+
     })
   }
 

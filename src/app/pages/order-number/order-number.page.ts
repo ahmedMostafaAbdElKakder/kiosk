@@ -30,7 +30,7 @@ export class OrderNumberPage implements OnInit {
   }
 
   Done(){
-    this.route.navigateByUrl('/')
+    this.route.navigateByUrl('/order-here')
     sessionStorage.clear()
     sessionStorage.setItem('status','false')
     this.rest.sendObsData("false")

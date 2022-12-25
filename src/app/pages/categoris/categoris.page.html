@@ -19,10 +19,10 @@
       <ion-row>
         <ion-col class="menu" [ngClass]="{'ifClick':showModfire}" size="3">
             <p class="mainMenu"> {{Menu}} </p>
-            <div  class="menuItem">
+            <!-- <div  class="menuItem">
               <img src="assets/images/mostSelling.png">
               <p>{{bestSelling}}</p>
-            </div>
+            </div> -->
             <div class="menuItem" (click)="gotToDetails('Discount')">
               <img src="assets/images/discount.png">
               <p>{{discount}}</p>
@@ -45,8 +45,17 @@
                 <!--  [ngClass]="{'colOne':item.status == false}" -->
                 <ion-col size="6" class="rowOne colOne" (click)="GetModifiresbyProductId(item,item.Id)"
                   *ngFor="let item of items ; let i = index">
-                  <span *ngIf="langId != 1" class="price_name">{{LE}}.{{item.Price}}</span>
-                  <span *ngIf="langId == 1" class="price_name">{{item.Price}}.{{LE}}</span>
+
+                  <div class="price_name" *ngIf="langId == 1">
+                    <span style="color: red" *ngIf="item.NewPrice != 0"><s>{{item.Price}} {{LE}}</s></span>
+                    <span *ngIf="item.NewPrice == 0">{{item.Price}} {{LE}}</span>
+                    <span *ngIf="item.NewPrice != 0">{{item.NewPrice}} {{LE}}</span>
+                  </div>
+                  <div class="price_name" *ngIf="langId != 1"> 
+                    <span style="color: red" *ngIf="item.NewPrice != 0"><s>{{LE}} {{item.Price}}</s></span>
+                    <span *ngIf="item.NewPrice == 0">{{LE}} {{item.Price}}</span>
+                    <span *ngIf="item.NewPrice != 0">{{LE}} {{item.NewPrice}}</span>
+                  </div>
                   <img src="{{item.Image}}">
                   <p class="price_name">{{item.Name}}</p>
                 </ion-col>
@@ -69,7 +78,7 @@
     <ion-grid>
       <ion-row>
         <ion-col (click)="gotToDetails(item)" *ngFor="let item of ModifiresbyProductId ; let i = index" size="3">
-          <p class="price">LE.{{item.Price}}</p>
+          <p class="price">LE {{item.Price}}</p>
           <img src="{{item.Image}}">
           <p class="name">{{item.Name}}</p>
         </ion-col>

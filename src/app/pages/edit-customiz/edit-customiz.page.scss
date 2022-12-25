@@ -1,0 +1,108 @@
+.header{
+    text-align: center;
+    background: rgb(252, 180, 0)
+  }
+  h5{
+    font-size: 3rem;
+    margin: 10px
+  }
+  ion-content{
+    --background:#fff ;
+    --color: black
+  }
+  ion-button {
+    --background: #E1E1E1;
+    --color: #000; 
+    text-transform: none;
+  }
+  .back ,.backIfRight{
+    text-transform: none;
+    margin-top: 5px;
+  }
+  .back ion-button , .backIfRight ion-button{
+    --padding-start: 2em;
+    --padding-end: 2em;
+    --border-radius:5px;
+    margin-top: 5%;
+    font-size: 5vw;
+    height: 84px;
+    margin-bottom:3%
+  }
+  .back {
+    text-align: right;
+  }
+  .backIfRight{
+    text-align: left;
+  }
+
+  .addSouce {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px
+}
+
+.addSouce ion-button {
+    --background: rgb(252, 180, 0);
+    color: #000;
+    height: 135px;
+    font-size: 5vw
+}
+.count {
+  background: gainsboro;
+  height: 135px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  margin-top: 3px;
+  font-size: 5vw;
+}
+.count p {
+    margin: 0;
+}
+.extra{
+  margin-top: 6px;
+  font-size:5vw;
+}
+.extra span {
+  font-size: 4vw;
+  color: gray;
+}
+
+.footer {
+  position: absolute;
+  bottom: 1%;
+  width: 100%
+}
+.footer div {
+  display: flex;
+  justify-content: space-around
+}
+.footer ion-button{
+  width: 35%;
+  font-size: 4vw;
+  height: 120px;
+  
+
+}
+
+  @media only screen and (max-width:768px){
+    .imgProduct{
+        width: 82px;
+      }
+      .back ion-button , .backIfRight ion-button{
+        height: 41px;
+      }
+      h5{
+        font-size: 1rem
+      }
+      .addSouce ion-button{
+        height: 38px;
+      }
+      .count {
+        height: 42px;
+      }
+      .footer ion-button{
+        height: 42px;
+      }
+  }

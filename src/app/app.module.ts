@@ -7,8 +7,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { Printer, PrintOptions } from '@ionic-native/printer/ngx'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Printer, PrintOptions } from '@awesome-cordova-plugins/printer/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

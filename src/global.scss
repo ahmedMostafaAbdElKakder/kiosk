@@ -55,3 +55,19 @@ ion-spinner {
         font-size: 1rem;
     } 
 }
+
+
+@media print {
+  .page, .page-content, html, body, .framework7-root, .views, .view {
+      height: auto !important;
+  }
+
+  html, body, .framework7-root, .views, .view {
+      overflow: visible !important;
+      overflow-x: visible !important;
+  }
+
+  .page.page-previous {
+      display: none;
+  }
+}

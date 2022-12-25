@@ -21,11 +21,11 @@
       <ion-grid style="padding: 0">
         <ion-row>
           <ion-col size="3" class="navgation">
-              <p style="font-weight: bold ;font-size: 15px;">{{Menu}}</p>
+              <p class="mainMenu">{{Menu}}</p>
             <div>
-              <div  class="menuItem">
+              <div  class="menuItem" routerLink="/compo">
                 <img src="assets/images/mostSelling.png">
-                <p>{{bestSelling}}</p>
+                <p>{{Compo}}</p>
               </div>
               <div class="menuItem" (click)="gotToItems('Discount')">
                 <img src="assets/images/discount.png">

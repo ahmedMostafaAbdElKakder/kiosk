@@ -18,7 +18,7 @@
         <ion-col size="4" class="rowOne" (click)="goToOeder(item)"
         [ngClass]="{'colOne':item.status == false}"
          *ngFor="let item of mostSellingArr ; let i = index">
-          <p class="price">LE.{{item.Price}}</p>
+          <p class="price">LE {{item.Price}}</p>
           <img src="{{item.Image}}">
           <p class="name">{{item.Name}}</p>
         </ion-col>

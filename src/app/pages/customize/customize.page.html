@@ -1,0 +1,52 @@
+<div class="header">
+  <img class="imgProduct " src="assets/images/kiosk.png">
+</div>
+
+<ion-content [dir]="dir">
+
+  <div [ngClass]="{'back':dir == 'ltr','backIfRight':dir == 'rtl'}">
+    <ion-button (click)="goBack()">{{Back}}</ion-button>
+  </div>
+
+
+  <section style="    height: 66vh;
+  overflow: scroll;">
+    <div *ngFor="let item of myArray" style="    border-bottom: 1px solid #d2d2d2;">
+      <div class="product">
+        <div>
+          <img src="{{item.Prdoucts[0].Image}}">
+          <p>{{item.Prdoucts[0].Name}}</p>
+        </div>
+        <ion-button (click)="gotToCustomize(item)">{{Customize}}</ion-button>
+      </div>
+
+      <div class="modfireAndIngrd">
+        <div *ngIf="item.ingridtArr != 0">
+          <p>{{Ingredients}}</p>
+          <ul>
+            <li *ngFor="let ingrd of item.ingridtArr">
+              {{ingrd.count}} {{ingrd.Name}} X {{ingrd.Price}}{{LE}}
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="item.modfire != 0">
+          <p>{{Modfires}}</p>
+          <ul>
+            <li *ngFor="let modfire of item.modfire">
+            {{modfire.count}} {{modfire.Name}} X {{modfire.Price}}{{LE}}
+          </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="footer" dir="ltr">
+      <div>
+        <ion-button (click)="cancel()">{{Cancel}}</ion-button>
+        <ion-button (click)="addOrder()">{{addChange}}</ion-button>
+      </div>
+    </div>
+
+</ion-content>

@@ -1,0 +1,229 @@
+
+.header{
+    text-align: center;
+    background: rgb(252, 180, 0)
+}
+ion-button {
+    --background: #E1E1E1;
+    --color: black; 
+    text-transform: none;
+    --padding-start: 2em;
+    --padding-end: 2em;
+    --border-radius:5px;
+    margin-top: 5%;
+    font-size: 5vw;
+    height: 100px;
+
+  }
+  .back {
+    text-align: right;
+  }
+  .backIfRight{
+    text-align: left;
+  }
+  ion-content{
+    --background:#fff ;
+    --color: black;
+    font-size: 3rem
+}
+h3 {
+    font-size: 3rem;
+    margin-bottom:5%
+}
+.nameAndDesc {
+    font-size: 2.5rem;
+}
+.nameAndDesc span {
+    font-size: 3rem;
+}
+.menuItem img {
+    height: 150px;
+}
+
+.mainSecion{
+    margin: 10px 20px;
+    height: 54vh;
+    overflow: scroll
+}
+.nameOfProduct span {
+    background: gray;
+    padding: 10px
+}
+.product{
+    display: flex;
+}
+.size {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:5%
+}
+
+.ifClick {
+    background: gainsboro;
+    padding:6;
+    margin-bottom: 10px;
+    border-radius: 10px
+}
+
+.itemOfSize{
+    display: flex;
+    width: 75%;
+}
+.itemOfSize p {
+    margin: 12px 10px 0 10px;
+}
+.itemSize{
+    background: #3a3a3a;
+    margin-right: 5% !important;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    padding-top: 18px;
+    margin-top: 30px !important;
+    color: #fff;
+}
+
+
+.quantity p {
+    font-size: 5vw
+  }
+  .plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .plus ion-button{
+      --background: #fab328;
+      color: #000;
+      font-size: 5vw;
+      height: 113px;
+  }
+  .plus div{
+      display: flex;
+  }
+  .count {
+      justify-content: center;
+      align-items: center
+  }
+  .count p {
+    background: #bababa;
+    padding: 24px 72px;
+    border-radius: 5px;
+    margin: 22px 15px 0 15px;
+
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 1%;
+    width: 100%
+  }
+  .footer div {
+    display: flex;
+    justify-content: space-around
+  }
+  .footer ion-button{
+    width: 35%;
+    font-size: 4vw;
+    height: 120px;
+    
+
+  }
+@media only screen and (max-width:768px){
+    .nameAndDesc{
+        font-size: 1.5rem
+    }
+    .nameAndDesc span{
+        font-size: 1rem
+    }
+    h3{
+        font-size: 1rem
+    }
+    .size{
+        font-size: 1rem
+    }
+    .itemSize{
+        background: #3a3a3a;
+        margin-right: 5% !important;
+        height: 49px;
+        width: 46px;
+        text-align: center;
+        padding-top: 18px;
+        margin-top: 0 !important;
+        color: #fff;
+    }
+    .itemOfSize p {
+        margin: 2px 10px 0 10px;
+        font-size: 12px;
+    }
+    .footer ion-button{
+        font-size: 13px;
+        height: 39px;
+    }
+    h3{
+        margin-top: 0
+    }
+    .mainSecion{
+        margin-top: 0
+    }
+    .back ion-button{
+        margin-top: 0
+    }
+    .count p{
+        background: #bababa;
+        padding: 8px 48px;
+        border-radius: 5px;
+        margin: 11px 15px 0 15px;
+    }
+    .plus ion-button{
+        --background: #fab328;
+        color: #000;
+        font-size: 3vw;
+        height: 37px;
+    }
+    .imgProduct{
+        height: 71px;
+    }
+    .menu {
+        height: 67vh;
+        margin-top: -19%;
+    }
+    .menuItem{
+        padding: 12px 0;
+    }
+    .menuItem img {
+        height: 50px;
+        width: auto
+    }
+    .back ion-button{
+        height: 36px;
+    }
+    .menu .mainMenu{
+        font-size: 13px;
+    }
+    .products img{
+        width: auto;
+        height: 90px;
+        
+    }
+    .confirmOrCancel ion-button{
+      height: 44px;
+    }
+    .ifClick{
+        padding:6px;
+        border-radius: 10px
+    }
+    .cover2{
+        height:23vh;
+    }
+    .next {
+        height: 36px !important;
+    }
+    .back ion-button , .backIfRight ion-button{
+        height: 41px;
+      }
+      .next  {
+        bottom: 25%;
+        left: 5px;
+    }
+  }

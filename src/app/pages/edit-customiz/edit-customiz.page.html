@@ -1,0 +1,74 @@
+<div class="header">
+  <img class="imgProduct " src="assets/images/kiosk.png">
+</div>
+
+<ion-content>
+  <div [ngClass]="{'back':dir == 'ltr','backIfRight':dir == 'rtl'}">
+    <ion-button (click)="goBack()">{{Back}}</ion-button>
+  </div>
+
+
+  <h5> {{Ingredients}}</h5>
+  <ion-grid>
+    <ion-row class="addSouce" *ngFor="let item of ingrdArr">
+      <ion-col size="2">
+        <ion-button (click)="plus(item)">+</ion-button>
+      </ion-col>
+
+      <ion-col size="2">
+        <ion-button (click)="minus(item)">-</ion-button>
+      </ion-col>
+
+      <ion-col size="2">
+        <div class="count">
+          <p>{{item.count}}</p>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <p class="extra">{{item.Name}}<br>
+          <span *ngIf="langId != 1">{{LE}} {{item.Price}}</span>
+          <span *ngIf="langId == 1">{{item.Price}} {{LE}}</span>
+        </p>
+      </ion-col>
+      <ion-col size="2">
+        <img src="{{item.Image}}">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h5>{{Modfires}}</h5>
+  <ion-grid>
+    <ion-row class="addSouce" *ngFor="let item of modfiresArr">
+      <ion-col size="2">
+        <ion-button (click)="plus(item)">+</ion-button>
+      </ion-col>
+
+      <ion-col size="2">
+        <ion-button (click)="minus(item)">-</ion-button>
+      </ion-col>
+
+      <ion-col size="2">
+        <div class="count">
+          <p>{{item.count}}</p>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <p class="extra">{{item.Name}}<br>
+          <span *ngIf="langId != 1">{{LE}} {{item.Price}}</span>
+          <span *ngIf="langId == 1">{{item.Price}} {{LE}}</span>
+        </p>
+      </ion-col>
+      <ion-col size="2">
+        <img src="{{item.Image}}">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <div class="footer" dir="ltr">
+    <div>
+      <ion-button (click)="goBack()">{{Cancel}}</ion-button>
+      <ion-button (click)="save()">{{addChange}}</ion-button>
+    </div>
+  </div>
+</ion-content>

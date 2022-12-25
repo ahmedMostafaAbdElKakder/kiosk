@@ -12,46 +12,54 @@
     <p style="color: #fff ; font-size: 5vw">{{reviewMyOrder}}</p>
   </div>
   <div class="form-group serial" [dir]="dir" *ngIf="!block">
-      <input (input)="inputChange($event)" [(ngModel)]="serialNumber" [placeholder]="placeHolder" class="btn btn-primary" type="text">
-      <ion-button [disabled]="serialNumber == ''" style="color: #000" (click)="validSerial()">{{serialVaild}}</ion-button>
-    </div>
-    <p *ngIf="showStatusValid" style="color: green" class="giftCard">{{giftCardISVaild}} {{giftCardCount}} {{LE}}</p>
-    <p *ngIf="showStatusValidFalse && serialNumber != ''" style="color: red"  class="giftCard">{{giftCardISVaild}}</p>
+    <input (input)="inputChange($event)" [(ngModel)]="serialNumber" [placeholder]="placeHolder" class="btn btn-primary"
+      type="text">
+    <ion-button [disabled]="serialNumber == ''" style="color: #000" (click)="validSerial()">{{serialVaild}}</ion-button>
+  </div>
+  <p *ngIf="showStatusValid" style="color: green" class="giftCard">{{giftCardISVaild}} {{giftCardCount}} {{LE}}</p>
+  <p *ngIf="showStatusValidFalse && serialNumber != ''" style="color: red" class="giftCard">{{giftCardISVaild}}</p>
 
   <div class="containerPrdouct" [dir]="dir" *ngIf="!block">
     <div class="containerOfShaping" style="margin-top: 5%;" *ngFor="let product of item ; let i = index">
-      <div class="nameAndPrice">
-        <p>{{product.Prdoucts[0].count}}x {{product.Prdoucts[0].Name}}</p>
-        <p>{{product.Prdoucts[0].Price * product.Prdoucts[0].count}} {{LE}} </p>
+      <p *ngIf="product.Prdoucts[0].compoName">{{product.Prdoucts[0].compoName}} - {{product.Prdoucts[0].parentCombo}} - {{product.Prdoucts[0].sizeName}}</p>
+      <div class="nameAndPrice" *ngFor="let item of product.Prdoucts">
+        <p>{{item.count}}x {{item.Name}}</p>
+        <p *ngIf="!product.Prdoucts[0].sizeName">{{item.Price * item.count | number : '1.2-2'}} {{LE}} </p>
       </div>
       <hr>
       <div *ngIf="product.ingridtArr.length ">
         <div class="nameAndPrice" *ngFor="let item of product.ingridtArr">
           <p> {{item.count}}x {{item.Name}}</p>
-          <p>{{item.Price * item.count}} {{LE}}</p>
+          <p>{{item.Price * item.count | number : '1.2-2'}} {{LE}}</p>
         </div>
       </div>
       <hr>
-      <div class="nameAndPrice" *ngIf="product.ifMode == false">
-        <p>{{product.count}}x {{product.Name}}</p>
-        <p>{{product.Price * product.count}} {{LE}}</p>
+      <div *ngIf="product.modfire.length ">
+        <div class="nameAndPrice" *ngFor="let item of product.modfire">
+          <p> {{item.count}}x {{item.Name}}</p>
+          <p>{{item.Price * item.count | number : '1.2-2'}} {{LE}}</p>
+        </div>
       </div>
       <hr>
       <div>
-        <p *ngIf="product.discount && product.DiscountType == 1 && langId != 1" class="right">{{Total}} <s style="color: red">{{LE}}.{{product.oldTotal}}</s> <br>
-          ({{product.discount}}%) {{upto}} {{product.MaxDiscountAmount}} </p>
+        <p *ngIf="product.discount && product.DiscountType == 1 && langId != 1" class="right">{{Total}} <s
+            style="color: red">{{LE}}.{{product.oldTotal | number : '1.2-2'}}</s> <br>
+          ({{product.discount * product.Prdoucts[0].count}}%) {{upto}} {{product.MaxDiscountAmount}} </p>
 
-          <p *ngIf="product.discount && product.DiscountType == 2 && langId != 1" class="right">{{Total}} <s style="color: red">{{LE}}.{{product.oldTotal}}</s> <br>
-            (-{{product.discount}}) {{Discount}} </p>
+        <p *ngIf="product.discount && product.DiscountType == 2 && langId != 1" class="right">{{Total}} <s
+            style="color: red">{{LE}}.{{product.oldTotal | number : '1.2-2'}}</s> <br>
+          (-{{product.discount * product.Prdoucts[0].count}}) {{Discount}} </p>
 
-            <p *ngIf="product.discount && product.DiscountType == 1 && langId == 1" class="right">{{Total}} <s style="color: red">{{product.oldTotal}} {{LE}}</s> <br>
-              ({{product.discount}}%) {{upto}} {{product.MaxDiscountAmount}} </p>
-    
-              <p *ngIf="product.discount && product.DiscountType == 2 && langId == 1" class="right">{{Total}} <s style="color: red">{{product.oldTotal}} {{LE}}</s> <br>
-                (-{{product.discount}}) {{Discount}} </p>
+        <p *ngIf="product.discount && product.DiscountType == 1 && langId == 1" class="right">{{Total}} <s
+            style="color: red">{{product.oldTotal | number : '1.2-2'}} {{LE}}</s> <br>
+          ({{product.discount * product.Prdoucts[0].count}}%) {{upto}} {{product.MaxDiscountAmount}} </p>
 
-        <p *ngIf="product.discount" class="right"> {{product.total | number : '1.0'}} {{LE}}</p>
-        <p *ngIf="!product.discount" class="right"><span>{{Total}} </span> {{product.total | number : '1.0'}} {{LE}}
+        <p *ngIf="product.discount && product.DiscountType == 2 && langId == 1" class="right">{{Total}} <s
+            style="color: red">{{product.oldTotal | number : '1.2-2'}} {{LE}}</s> <br>
+          (-{{product.discount * product.Prdoucts[0].count}}) {{Discount}} </p>
+
+        <p *ngIf="product.discount" class="right"> {{product.total | number : '1.2-2'}} {{LE}}</p>
+        <p *ngIf="!product.discount" class="right"><span>{{Total}} </span> {{product.total | number : '1.2-2'}} {{LE}}
         </p>
       </div>
       <div class="editOrRemove">
@@ -67,13 +75,14 @@
     </div>
   </div>
 
-  
 
 
-  <div class="fotter">
 
+  <div class="fotter" *ngIf="!block">
+    <p style="color: #fff ; font-size: 4vw ; font-weight: bold">( {{serviceName}} {{serviceVat}}% ) {{service | number : '1.2-2'}} {{LE}}</p>
+    <p style="color: #fff ; font-size: 4vw ; font-weight: bold">( {{Vat}} {{TaxGroup}}% ) {{VatValue | number : '1.2-2'}} {{LE}}</p>
     <p style="color: #fff ; font-size: 4vw ; font-weight: bold">{{Total}}
-      {{totalPrice | number : '1.0'}} {{LE}}</p>
+      {{totalPrice | number : '1.2-2'}} {{LE}}</p>
     <div class="ion-foter" dir="ltr">
       <ion-button [disabled]="block" (click)="cancel()">{{Cancel}}</ion-button>
       <ion-button [disabled]="block" (click)="goToCheckOut()">{{CheckOut}}</ion-button>

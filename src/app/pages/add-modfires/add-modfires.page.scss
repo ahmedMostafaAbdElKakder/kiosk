@@ -1,0 +1,161 @@
+.header{
+    text-align: center;
+    background: rgb(252, 180, 0)
+  }
+  
+  ion-content{
+      --background: #fff;
+      --color: #000
+  }
+  ion-button {
+    --background: #E1E1E1;
+    --color: #000; 
+    text-transform: none;
+  }
+  .cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    background: rgba(255, 255, 255, 0.79);
+    text-align: center;
+    color: #fff;
+    top: 0
+  }
+  .cover h1 {
+    font-weight: bold;
+    margin-top: 12%;
+    font-size: 5vw;
+    color: black
+  }
+    .imgProduct{
+      width:auto;
+    }
+  
+    .back {
+      text-align: right;
+    }
+    .backIfRight{
+      text-align: left;
+    }
+    
+    .back , .backIfRight{
+      text-align: right;
+      text-transform: none;
+      margin-top: 5px;
+    }
+    .back ion-button , .backIfRight ion-button{
+      --padding-start: 2em;
+      --padding-end: 2em;
+      --border-radius:5px;
+      margin-top: 5%;
+      font-size: 5vw;
+      height: 100px;
+  
+      margin-bottom:3%
+    }
+    .order{
+        display: flex;
+        justify-content: space-between;
+    }
+    .orderName{
+        display: flex
+    }
+    .orderName p {
+        margin-left: 5px;
+        font-size: 5vw
+    }
+    .orderName img {
+      max-width:250px
+    }
+    .order .parg{
+      font-size: 5vw
+    }
+    .addSouce {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px
+    }
+  
+    .addSouce ion-button {
+        --background: rgb(252, 180, 0);
+        color: #000;
+        height: 135px;
+        font-size: 5vw
+    }
+    .count {
+      background: gainsboro;
+      height: 135px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 6px;
+      margin-top: 3px;
+      font-size: 5vw;
+    }
+    .count p {
+        margin: 0;
+    }
+    .extra{
+      margin-top: 6px;
+      font-size:5vw;
+    }
+    .extra span {
+      font-size: 4vw;
+      color: gray;
+    }
+    .fotter {
+        position: absolute;
+        bottom: 1%;
+        width: 100%
+    }
+    .fotter div {
+      display: flex;
+      justify-content: space-around
+    }
+    .fotter ion-button{
+      width: 39%;
+      height: 138px;
+      font-size: 4vw;
+    }
+    h5 {
+      margin-top: 18px;
+      margin-bottom: 18px;
+      font-size: 7vw;
+    margin-left: 10px;
+    margin-right: 10px;
+
+  
+    }
+    @media only screen and (max-width:768px){
+      .orderName img {
+        width: 26%;
+      }
+      .imgProduct{
+        width: 82px;
+      }
+      .products img{
+        height: 74px;
+      }
+      .menuItem img{
+        height: 74px;
+      }
+      .fotter ion-button{
+        height: 44px;
+      }
+      .back ion-button{
+        margin-bottom: 0;
+        height: 36px;
+        margin-top: 0;
+      }
+      .addSouce ion-button{
+        height: 43px;
+        font-size: 4vw;
+      }
+      .count{
+        height:43px;
+      }
+      .back ion-button , .backIfRight ion-button{
+        height: 41px;
+      }
+    }

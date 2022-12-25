@@ -1,0 +1,15 @@
+<ion-content>
+  <ion-img class="logoImage" src="assets/images/logoFinal02.png"></ion-img>
+
+  <div class="container">
+      <ion-list>
+        <ion-radio-group [(ngModel)]="selectedValue" (ionChange)="getRadio($event)">
+          <ion-item *ngFor="let item of arrOfBranch">
+            <ion-label>{{item.Name}}</ion-label>
+            <ion-radio name="sdas" value="{{item.Id}}"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-button [disabled]="disabledButton" class="btn" (click)="goToOrder()">Continue</ion-button>
+  </div>
+</ion-content>

@@ -12,8 +12,6 @@ ion-button {
   --color: #000; 
   text-transform: none;
 }
-
-
 .cover {
   position: absolute;
   width: 100%;
@@ -58,15 +56,23 @@ ion-button {
       display: flex;
   }
   .orderInfo img {
-      margin-right: 10px;
-      margin-left: 10px;
+      margin-right:20px;
+      margin-left: 20px;
+      max-width: 250px;
+      max-height: 200px;
 
   }
   .orderInfo p {
-      font-size: 5vw;
+    font-size: 4vw;
+    margin-bottom: 5px;
   }
   .orderInfo span{
     font-size: 4vw;
+  }
+
+  .ExtraName {
+    height: 18vh;
+    overflow: scroll;
   }
   .ExtraName p {
     font-size: 4vw;

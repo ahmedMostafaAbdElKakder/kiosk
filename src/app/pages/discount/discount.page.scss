@@ -10,8 +10,14 @@ ion-header img {
 }
 ion-button {
     --background: #E1E1E1;
-    --color: black; 
+    --color: #000;
     text-transform: none;
+    width: 250px;
+    --padding-start: 2em;
+    --padding-end: 2em;
+    --border-radius: 5px;
+    font-size: 5vw;
+    height: 100px;
   }
   ion-content{
     --background:#fff ;
@@ -55,12 +61,12 @@ ion-button {
   .back ion-button{
     --padding-start: 2em;
     --padding-end: 2em;
-    --border-radius:5px;
-    margin-top: 5%;
+    --border-radius: 5px;
+    margin-top: 2%;
     font-size: 5vw;
     height: auto;
-    margin-bottom:3%;
-    height: 36px;
+    margin-bottom: 5%;
+    height: 100px;
   }
   .back p {
       font-weight: bold;
@@ -99,7 +105,7 @@ ion-button {
     font-size: 3vw;
 }
 .menuItem img {
-    height: 200px;
+    height: 150px;
 }
 
 .price_name{
@@ -146,7 +152,7 @@ ion-button {
 .footer {
     position: absolute;
     width: 100%;
-    bottom:0;
+    bottom:8px;
 }
 .recmoended p{
     margin: 0;
@@ -155,10 +161,10 @@ ion-button {
 }
 
 .menu{
-    height: 65vh;
+    height: 72vh;
     overflow-y: scroll;
     background: #e7e7e7;
-    margin-top: -18%;
+    margin-top: -17%;
 }
 .products{
     height: 52vh;
@@ -217,6 +223,10 @@ ion-button {
 // }
 
 @media only screen and (max-width:768px){
+    .backButton{
+        width: auto;
+        height: 37px !important;
+    }
     .imgProduct{
         width: 81px;
     }

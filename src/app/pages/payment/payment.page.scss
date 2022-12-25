@@ -85,6 +85,32 @@ ion-button {
     height: 100vh !important;
     background: gray !important
   }
+
+  #printer {
+    // display: none
+  } 
+  
+  // #printer {
+  //   font-size: 50px
+  // }
+  #printer hr {
+    background: black;
+  }
+
+  .d-flex{
+    display: flex;
+    justify-content: space-between
+  }
+  .d-flex p {
+    margin-top: 0;
+    margin-bottom: 10px
+  }
+  ion-spinner{
+    position: absolute;
+    top: 43%;
+    left: 43%;
+    transform: scale(4.5);
+  }
   @media only screen and (max-width:768px){
     .back ion-button{
       margin-bottom: 0;
@@ -93,5 +119,20 @@ ion-button {
     }
     .product{
       height: 35vh;
+    }
+  }
+
+  @media print {
+    .page, .page-content, html, body, .framework7-root, .views, .view {
+        height: auto !important;
+    }
+  
+    html, body, .framework7-root, .views, .view {
+        overflow: visible !important;
+        overflow-x: visible !important;
+    }
+  
+    .page.page-previous {
+        display: none;
     }
   }

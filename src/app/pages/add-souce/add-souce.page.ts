@@ -33,8 +33,8 @@ export class AddSoucePage implements OnInit {
       this.dir = 'rtl'
       this.Back = "رجوع"
       this.Cancel = "إلغاء"
-      this.addChange = "اضف المتغيرات"
-      this.ingrdtiont = "الاضافات"
+      this.addChange = "اضف المكونات"
+      this.ingrdtiont = "المكونات"
       this.LE = "جنيه"
     } else {
       this.dir = 'ltr'
@@ -51,11 +51,6 @@ export class AddSoucePage implements OnInit {
 productImage
   getData() {
     this.item = JSON.parse(sessionStorage.getItem('ModfireOfChose'))
-    let mod =  sessionStorage.getItem('ifModFire')
-    if(mod == 'false'){
-      this.item.Modfire = []
-      console.log("true")
-    }
     this.prdouct = JSON.parse(sessionStorage.getItem('ProductOfChose'))
     this.prdouctName = this.prdouct.Name
     this.productPrice = this.prdouct.Price

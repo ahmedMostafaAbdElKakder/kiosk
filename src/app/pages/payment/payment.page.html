@@ -1,39 +1,106 @@
-<ion-header [translucent]="true">
-    <div class="back">
-        <ion-button (click)="goBack()">{{Back}}</ion-button>
-    </div>
-  </ion-header>
-  
-  <ion-content [fullscreen]="true">
-    <div class="logo">
-      <ion-img class="logoImage" src="assets/images/logoFinal02.png"></ion-img>
-    </div>
-    <div class="title">
-      <h1>{{selectPayment}}</h1>
-    </div>
-  
-    <div>
-      <ion-grid>
-        <ion-row>
-          <ion-col offset="1" size="5">
-            <div class="product" (click)="pay()">
-              <ion-img class="imgProduct"  src="assets/images/Casher.png"></ion-img>
-              <ion-button class="button">{{Counter}}</ion-button>
-            </div>
-          </ion-col>
-          <ion-col size="5">
-              <div class="product" (click)="pay()">
-                <ion-img class="imgProduct" src="assets/images/pos.png"></ion-img>
-                <ion-button class="button">{{Here}}</ion-button>
-              </div>
-            </ion-col>
-        </ion-row>
-      </ion-grid>
-      <!-- <div id="printer">
-        The world is your oyster.
+<!-- <ion-header [translucent]="true">
+  <div class="back">
+    <ion-button (click)="goBack()">{{Back}}</ion-button>
+  </div>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <ion-spinner dir="ltr" *ngIf="block" name="circles"></ion-spinner>
+  <div class="logo">
+    <ion-img class="logoImage" src="assets/images/logoFinal02.png"></ion-img>
+  </div>
+  <div class="title" *ngIf="!block">
+    <h1>{{selectPayment}}</h1>
+  </div>
+
+  <div *ngIf="!block">
+    <ion-grid>
+      <ion-row>
+        <ion-col offset="1" size="5">
+          <div class="product" (click)="pay()">
+            <ion-img class="imgProduct" src="assets/images/Casher.png"></ion-img>
+            <ion-button class="button">{{Counter}}</ion-button>
+          </div>
+        </ion-col>
+        <ion-col size="5">
+          <div class="product" (click)="pay()">
+            <ion-img class="imgProduct" src="assets/images/pos.png"></ion-img>
+            <ion-button class="button">{{Here}}</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- <button style="font-size: 3rem ; height:120px;" (click)="print(0)">Print</button> -->
+
+  <!-- <div #screen id="printer">
+    <img  src="assets/images/logoFinal01.png">
+    <p style="font-size: 50px">{{date}}</p>
+    <p >{{branchName}}</p>
+    <p style="font-size: 50px" id="orderNumber">#{{ordernumber}}</p>
+
+    <div class="productPrinter" *ngFor="let item of productsArr" id="productDetails">
+      <div *ngFor="let product of item.mainData ; let i = index">
+        <div *ngIf="product._mainData">
+          <p>x{{product._mainData.Count}} {{product._mainData.name}}</p>
+          <p>{{product._mainData.Price | number : '1.2-2'}} LE</p>
+
+          <div *ngFor="let modfire of product.Modifires">
+            <p>x{{modfire.Count}} {{modfire.name}}</p>
+            <p>{{modfire.Price | number : '1.2-2'}} LE</p>
+          </div>
+
+          <div *ngFor="let ingrd of product.Ingredients">
+            <p>x{{ingrd.Count}} {{ingrd.name}}</p>
+            <p>{{ingrd.Price | number : '1.2-2'}} LE</p>
+          </div>
         </div>
-        <button class="button" (click)="print()">Print</button> -->
+        <div *ngIf="!product._mainData">
+          <p *ngIf="i == 0">{{product.compoName}} - {{product.parentCombo}} - {{product.sizeName}}</p>
+          <p >x{{product.Count}} {{product.name}}</p>
+          <p >{{product.Price | number : '1.2-2'}} LE</p>
+        </div>
+      </div>
+      <hr>
+    </div>
 
-    </div>  
+    <div class="d-flex">
+      <p>Price : </p>
+      <p>{{obj.priceBeforDiscount}} LE</p>
+    </div>
+    <div *ngIf="DiscountAmount != 0" >
+      <div class="d-flex">
+          <p> DISCOUNT : </p>
+          <p>-{{DiscountAmount}}</p>
+      </div>
+      <div class="d-flex">
+          <p>PRICE AFTER DISCOUNT : </p>
+          <p>{{priceBeforDiscount - DiscountAmount}} LE</p>
+      </div>
+    </div>
+    <div class="d-flex">
+        <p>Tax Vat ({{obj.taxVat}}%) :</p>
+        <p>{{vatValue | number : '1.2-2'}} LE</p>
+    </div>
+    <div class="d-flex">
+        <p >Service VAT ({{obj.serviceVat}}%)</p>
+        <p>{{obj.service | number : '1.2-2'}} LE</p>
+    </div>
+    <div *ngIf="giftCardCount != 0" class="d-flex">
+      <p>PRICE BEFORE GIFT CARD : {{totalPriceAfterVat}}</p>
+      <p>GIFT CARD : -{{giftCardCount}}</p>
+    </div>
+    <div class="d-flex">
+        <p>Total Price</p>
+        <p>{{totalPrice | number : '1.2-2'}} LE</p>
+    </div>
 
-  </ion-content>
+
+  </div> -->
+
+  <!-- <div id="download" (click)="downloadImage()">
+    <img #canvas>
+    <a #downloadLink>dowen</a>
+  </div> -->
+</ion-content>

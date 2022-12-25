@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-img class="logoImage" src="assets/images/logoFinal02.png"></ion-img>
+
+  <div class="container">
+
+    <form>
+      <ion-item>
+        <ion-label position="stacked">Your Email</ion-label>
+        <ion-input type="email" (input)="getEmail($event)"
+         placeholder="Enter Your Email"></ion-input>
+      </ion-item>
+      <p *ngIf="showErorrMasg" style="    font-size: 14px;
+      margin: 0 0 5px 10px;
+      text-align: left;
+      color: red;">{{erorrMasg}}</p>
+      <ion-button class="btn" (click)="getData()">Login</ion-button><br>
+      <ion-button class="btn" *ngIf="showSkip" routerLink="/order-here">Skip</ion-button>
+    </form>
+  </div>
+</ion-content>

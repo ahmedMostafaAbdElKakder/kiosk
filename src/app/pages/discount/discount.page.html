@@ -6,16 +6,16 @@
 <ion-content [dir]="dir">
   <div class="">
     <div  [ngClass]="{'back':dir == 'ltr', 'backIfRight':dir == 'rtl'}">
-      <ion-button (click)="goBack()">{{Back}}</ion-button>
+      <ion-button class="backButton" (click)="goBack()">{{Back}}</ion-button>
     </div>
 
     <ion-grid style="padding: 0">
       <ion-row>
         <ion-col class="menu" [ngClass]="{'ifClick':showModfire}" size="3">
           <p class="mainMenu"> {{Menu}} </p>
-          <div  class="menuItem">
+          <div  class="menuItem" routerLink="/compo">
             <img src="assets/images/mostSelling.png">
-            <p>{{bestSelling}}</p>
+            <p>{{Compo}}</p>
           </div>
           <div class="menuItem" (click)="gotToDetails('Discount')">
             <img src="assets/images/discount.png">
@@ -41,14 +41,14 @@
                   *ngFor="let item of items ; let i = index">
                   <div class="price_name">
                     <p class="after">
-                      Befor
+                      {{Befor}}
                       <br>
-                      <span><s>LE.{{item.Price}}</s></span>
+                      <span><s>LE {{item.Price}}</s></span>
                     </p>
                     <p class="befor">
-                      After
+                      {{After}}
                       <br>
-                      <span>LE.{{item.PriceAfterDiscount}}</span>
+                      <span>LE {{item.PriceAfterDiscount}}</span>
                     </p>
                   </div>
 
@@ -74,7 +74,7 @@
     <ion-grid>
       <ion-row>
         <ion-col (click)="gotToDetails(item)" *ngFor="let item of ModifiresbyProductId ; let i = index" size="3">
-          <p class="price">LE.{{item.Price}}</p>
+          <p class="price">LE {{item.Price}}</p>
           <img src="{{item.Image}}">
           <p class="name">{{item.Name}}</p>
         </ion-col>

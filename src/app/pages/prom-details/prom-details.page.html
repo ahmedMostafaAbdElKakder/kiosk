@@ -21,10 +21,10 @@
         <ion-col class="menu" [ngClass]="{'ifClick':showModfire}" size="3">
           <p class="mainMenu">{{Menu}}</p>
           <div>
-            <div class="menuItem">
+            <!-- <div class="menuItem">
               <img src="assets/images/mostSelling.png">
               <p>{{bestSelling}}</p>
-            </div>
+            </div> -->
             <div class="menuItem" (click)="gotToItems('Discount')">
               <img src="assets/images/discount.png">
               <p>{{discount}}</p>
@@ -46,7 +46,7 @@
                 <ion-col size="6" class="rowOne colOne" (click)="GetModifiresbyProductId(item,item.Id)"
                   *ngFor="let item of items ; let i = index">
                   <p class="price_name">
-                    LE.{{item.Price}}
+                    {{LE}} {{item.Price}}
                   </p>
                   <img src="{{item.Image}}">
                   <p class="nameOfPrdocuct">{{item.Name}}</p>
@@ -70,7 +70,7 @@
     <ion-grid>
       <ion-row>
         <ion-col (click)="gotToDetails(item)" *ngFor="let item of ModifiresbyProductId ; let i = index" size="3">
-          <p class="price">LE.{{item.Price}}</p>
+          <p class="price">LE {{item.Price}}</p>
           <img src="{{item.Image}}">
           <p class="name">{{item.Name}}</p>
         </ion-col>

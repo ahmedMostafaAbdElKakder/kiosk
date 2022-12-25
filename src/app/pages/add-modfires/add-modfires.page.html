@@ -1,0 +1,64 @@
+<!-- <ion-header>
+  <div>
+    <img class="imgProduct" src="assets/images/panner.jpeg">
+  </div>
+  <div class="cover">
+    <h1>{{prdouctName}}</h1>
+  </div>
+</ion-header> -->
+<div class="header">
+  <img class="imgProduct " src="assets/images/kiosk.png">
+</div>
+
+
+<ion-content [dir]="dir">
+  <div [ngClass]="{'back':dir == 'ltr','backIfRight':dir == 'rtl'}">
+    <ion-button (click)="goBack()">{{Back}}</ion-button>
+  </div>
+  <section class="ion-padding-start ion-padding-end">
+    <div class="order">
+      <div class="orderName">
+        <img src="{{productImage}}">
+        <p>{{prdouctName}}</p>
+      </div>
+      <p class="parg" *ngIf="langId != 1">{{LE}} {{productPrice}}</p>
+      <p class="parg" *ngIf="langId == 1">{{productPrice}} {{LE}}</p>
+    </div>
+
+    <h5> {{ingrdtiont}}</h5>
+
+    <ion-grid style="    height: 50vh;
+    overflow: scroll;">
+      <ion-row class="addSouce" *ngFor="let item of arrOfSouces">
+        <ion-col size="2">
+          <ion-button (click)="plus(item)">+</ion-button>
+        </ion-col>
+
+        <ion-col size="2">
+          <ion-button (click)="minus(item)">-</ion-button>
+        </ion-col>
+
+        <ion-col size="2">
+          <div class="count">
+            <p>{{item.count}}</p>
+          </div>
+        </ion-col>
+        <ion-col size="4">
+          <p class="extra">{{item.Name}}<br>
+            <span *ngIf="langId != 1">{{LE}} {{item.Price}}</span>
+            <span *ngIf="langId == 1">{{item.Price}} {{LE}}</span>
+          </p>
+        </ion-col>
+        <ion-col size="2">
+          <img src="{{item.Image}}">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+  <div class="fotter" dir="ltr">
+    <div>
+      <ion-button (click)="goBack()">{{Cancel}}</ion-button>
+      <ion-button (click)="goCheckOut()">{{addChange}}</ion-button>
+    </div>
+  </div>
+</ion-content>

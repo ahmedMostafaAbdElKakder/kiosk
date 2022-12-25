@@ -7,53 +7,55 @@
   </div>
 </ion-header> -->
 <div class="header">
-    <img class="imgProduct " src="assets/images/kiosk.png">
-  </div>
+  <img class="imgProduct " src="assets/images/kiosk.png">
+</div>
 
 
 <ion-content [dir]="dir">
-  <div  [ngClass]="{'back':dir == 'ltr','backIfRight':dir == 'rtl'}">
-      <ion-button (click)="goBack()">{{Back}}</ion-button>
-    </div>
+  <div [ngClass]="{'back':dir == 'ltr','backIfRight':dir == 'rtl'}">
+    <ion-button (click)="goBack()">{{Back}}</ion-button>
+  </div>
 
   <section class="order ion-padding-start ion-padding-end">
     <div class="orderInfo">
       <img src="{{image}}">
       <div>
         <p>{{nameOfItem}}</p>
-        <p *ngIf="item.ingridtArr.length != 0">{{edit}}</p>
+        <!-- <p *ngIf="item.ingridtArr.length != 0">{{edit}}</p> -->
         <span *ngIf="langId != 1">{{LE}} {{itemPrice}}</span>
         <span *ngIf="langId == 1">{{itemPrice}} {{LE}}</span>
       </div>
     </div>
-    <div *ngIf="item.ingridtArr.length != 0">
-      <ion-button class="cistomiz" (click)="goBack()">{{Customized}}</ion-button>
-    </div>
+    <!-- <div *ngIf="item.ingridtArr.length != 0">
+      <ion-button class="cistomiz" routerLink="/add-modfires">{{Customized}}</ion-button>
+    </div> -->
 
   </section>
-  <div *ngIf="item.ingridtArr.length != 0" class="ExtraName  ion-padding-start ion-padding-end">
+  <!-- <div *ngIf="item.ingridtArr.length != 0" class="ExtraName  ion-padding-start ion-padding-end">
     <div class="order" *ngFor="let item of arrayOfIngr">
-      <p>( {{ingedtiont}} ) : {{item.count}} {{item.Name}}</p>
+      <p> ( {{modfieres}} ) : {{item.count}} {{item.Name}}</p>
       <p *ngIf="langId != 1">{{Price}} {{LE}} {{item.Price}}</p>
       <p *ngIf="langId == 1">{{item.Price}} {{LE}} {{Price}} </p>
     </div>
     <hr>
   </div>
-  <div *ngIf="showOrHideMod" class="order ExtraName  ion-padding-start ion-padding-end">
-    <p>( {{modfieres}} ) : {{modfireName}}</p>
-    <p *ngIf="langId != 1">{{price}} {{LE}} {{modfirePrice}}</p>
-    <p *ngIf="langId == 1">{{modfirePrice}} {{LE}} {{price}}</p>
-  </div>
-  <div *ngIf="showOrHideMod" class="ion-padding-start ion-padding-end">
+  <div *ngIf="item.modfire.length != 0" class=" ExtraName  ion-padding-start ion-padding-end">
+    <div class="order" *ngFor="let item of modfiresArr">
+      <p>( {{ingedtiont}} )  : {{item.count}} {{item.Name}}</p>
+      <p *ngIf="langId != 1">{{Price}} {{LE}} {{item.Price}}</p>
+      <p *ngIf="langId == 1">{{item.Price}} {{LE}} {{Price}} </p>
+    </div>
+  </div> -->
+  <!-- <div *ngIf="showOrHideMod" class="ion-padding-start ion-padding-end">
     <hr>
-  </div>
+  </div> -->
 
   <div class="quantity">
     <p>
       {{Quantity}}
     </p>
     <div class="plus" [dir]="dir">
-      <div >
+      <div>
         <ion-button (click)="plus()">+</ion-button>
         <div class="count">
           <p>{{count}}</p>
@@ -65,7 +67,7 @@
   <div class="footer" dir="ltr">
     <div>
       <ion-button (click)="cancelOrder()">{{Cancel}}</ion-button>
-      <ion-button (click)="gotoMenu()">{{addChange}}</ion-button>
+      <ion-button (click)="gotoCustmoize()">{{addChange}}</ion-button>
     </div>
-  </div> 
+  </div>
 </ion-content>
