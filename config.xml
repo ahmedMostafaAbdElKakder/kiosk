@@ -27,10 +27,10 @@
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/bingo.png" />
         <icon density="mdpi" src="resources/android/icon/bingo.png" />
-        <icon density="hdpi" src="resources/android/icon/bnigo.png" />
-        <icon density="xhdpi" src="resources/android/icon/bnigo.png" />
-        <icon density="xxhdpi" src="resources/android/icon/bnigo.png" />
-        <icon density="xxxhdpi" src="resources/android/icon/bnigo.png" />
+        <icon density="hdpi" src="resources/android/icon/bingo.png" />
+        <icon density="xhdpi" src="resources/android/icon/bingo.png" />
+        <icon density="xxhdpi" src="resources/android/icon/bingo.png" />
+        <icon density="xxxhdpi" src="resources/android/icon/bingo.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
