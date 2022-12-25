@@ -1,5 +1,5 @@
 ion-content{
-  --background:rgb(60, 60, 59);
+  --background: #010100
 }
 ion-button {
   --background: #E1E1E1;
@@ -86,7 +86,7 @@ ion-spinner{
     margin: 4px ;
   }
   .plusAndMuins ion-button{
-    --background: rgb(252, 180, 0);
+    --background: #fcef50;
       color: #000;
       height: 95px;
   }
@@ -98,7 +98,7 @@ ion-spinner{
       text-align: right;
       width: 100%;
       padding: 0 2% 2% 2%;
-      background: #3c3c3b;
+      background: #010100;
     }
   .fotter div {
       display: flex;

@@ -1,5 +1,5 @@
 ion-content{
-  --background:rgb(60, 60, 59);
+  --background:#000000;
 }
 ion-button {
   --background: #E1E1E1;
@@ -24,7 +24,8 @@ ion-button {
   }
   .logo{
     display: flex;
-    justify-content: center
+    justify-content: center;
+    margin-top: 20%;
   }
   .logo .logoImage {
     width: 50%;
@@ -55,7 +56,7 @@ ion-button {
     margin: 30px auto;
   }
   .product .button{
-    --background: rgb(252,180,0);
+    --background: #fcef50;
     text-transform: none;
     height: 112px;
     font-size: 4vw;
