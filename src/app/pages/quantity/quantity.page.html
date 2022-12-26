@@ -22,8 +22,8 @@
       <div>
         <p>{{nameOfItem}}</p>
         <!-- <p *ngIf="item.ingridtArr.length != 0">{{edit}}</p> -->
-        <span *ngIf="langId != 1">{{LE}} {{itemPrice}}</span>
-        <span *ngIf="langId == 1">{{itemPrice}} {{LE}}</span>
+        <span *ngIf="langId != 1">{{LE}} {{itemPrice | number : '1.2-2'}}</span>
+        <span *ngIf="langId == 1">{{itemPrice | number : '1.2-2'}} {{LE}}</span>
       </div>
     </div>
     <!-- <div *ngIf="item.ingridtArr.length != 0">

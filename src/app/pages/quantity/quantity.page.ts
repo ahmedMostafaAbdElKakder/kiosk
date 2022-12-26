@@ -86,7 +86,12 @@ export class QuantityPage implements OnInit {
     // }
     this.prdouct = JSON.parse(sessionStorage.getItem('ProductOfChose'))
     this.nameOfItem = this.prdouct.Name
-    this.itemPrice = this.prdouct.Price
+    if(this.prdouct.NewPrice == 0){
+      this.itemPrice = this.prdouct.Price
+    }else {
+      this.itemPrice = this.prdouct.NewPrice
+    }
+    
     this.image = this.prdouct.Image
 
     this.modfiresArr = this.item.modfire

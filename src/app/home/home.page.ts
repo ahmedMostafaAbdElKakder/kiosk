@@ -40,11 +40,11 @@ export class HomePage implements OnInit {
   inShop
   ifLang(langId){
     if(langId == '2'){
-      this.title = "Where Will you be Eating Today"
+      this.title = "What will you choose today"
       this.takeOut = "Take Out"
       this.inShop = "In Shop"
     }else {
-      this.title = "أين ستأكل اليوم"
+      this.title = "ماذا ستختار اليوم"
       this.takeOut = "في الخارج"
       this.inShop = "في المتجر"
     }

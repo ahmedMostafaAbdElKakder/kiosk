@@ -45,9 +45,21 @@
               <ion-row>
                 <ion-col size="6" class="rowOne colOne" (click)="GetModifiresbyProductId(item,item.Id)"
                   *ngFor="let item of items ; let i = index">
-                  <p class="price_name">
-                    {{LE}} {{item.Price}}
-                  </p>
+                  <!-- <p class="price_name">
+                    {{LE}} {{item.NewPrice}}
+                  </p> -->
+                  <div class="price_name">
+                    <p class="after" style="color: red">
+                      {{Befor}}
+                      <br>
+                      <span><s>{{LE}} {{item.Price}}</s></span>
+                    </p>
+                    <p class="befor">
+                      {{After}}
+                      <br>
+                      <span>{{LE}} {{item.NewPrice}}</span>
+                    </p>
+                  </div>
                   <img src="{{item.Image}}">
                   <p class="nameOfPrdocuct">{{item.Name}}</p>
                 </ion-col>

@@ -47,14 +47,14 @@
                   *ngFor="let item of items ; let i = index">
 
                   <div class="price_name" *ngIf="langId == 1">
-                    <span style="color: red" *ngIf="item.NewPrice != 0"><s>{{item.Price}} {{LE}}</s></span>
-                    <span *ngIf="item.NewPrice == 0">{{item.Price}} {{LE}}</span>
-                    <span *ngIf="item.NewPrice != 0">{{item.NewPrice}} {{LE}}</span>
+                    <span style="color: red" *ngIf="item.NewPrice != 0"><s>{{item.Price | number : '1.2-2'}} {{LE}}</s></span>
+                    <span *ngIf="item.NewPrice == 0">{{item.Price | number : '1.2-2'}} {{LE}}</span>
+                    <span *ngIf="item.NewPrice != 0">{{item.NewPrice | number : '1.2-2'}} {{LE}}</span>
                   </div>
                   <div class="price_name" *ngIf="langId != 1"> 
-                    <span style="color: red" *ngIf="item.NewPrice != 0"><s>{{LE}} {{item.Price}}</s></span>
-                    <span *ngIf="item.NewPrice == 0">{{LE}} {{item.Price}}</span>
-                    <span *ngIf="item.NewPrice != 0">{{LE}} {{item.NewPrice}}</span>
+                    <span style="color: red" *ngIf="item.NewPrice != 0"><s>{{LE}} {{item.Price | number : '1.2-2'}}</s></span>
+                    <span *ngIf="item.NewPrice == 0">{{LE}} {{item.Price | number : '1.2-2'}}</span>
+                    <span *ngIf="item.NewPrice != 0">{{LE}} {{item.NewPrice | number : '1.2-2'}}</span>
                   </div>
                   <img src="{{item.Image}}">
                   <p class="price_name">{{item.Name}}</p>

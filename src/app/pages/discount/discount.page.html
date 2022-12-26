@@ -43,12 +43,12 @@
                     <p class="after">
                       {{Befor}}
                       <br>
-                      <span><s>LE {{item.Price}}</s></span>
+                      <span><s>{{LE}} {{item.Price | number : '1.2-2'}}</s></span>
                     </p>
                     <p class="befor">
                       {{After}}
                       <br>
-                      <span>LE {{item.PriceAfterDiscount}}</span>
+                      <span>{{LE}} {{item.PriceAfterDiscount | number : '1.2-2'}}</span>
                     </p>
                   </div>
 

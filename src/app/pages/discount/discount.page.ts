@@ -33,6 +33,7 @@ export class DiscountPage implements OnInit {
   Compo
   Befor
   After
+  LE
   constructor(private rest : RestService ,  private route :Router,private location: Location) { }
 
   ngOnInit() {
@@ -52,6 +53,7 @@ export class DiscountPage implements OnInit {
       this.Compo = "كومبو"
       this.After = "بعد"
       this.Befor = "قبل"
+      this.LE = "جنيه"
     }else {
       this.dir = "ltr"
       this.Menu = "Main Menu"
@@ -67,6 +69,7 @@ export class DiscountPage implements OnInit {
       this.Compo = "Combo"
       this.After = "After"
       this.Befor = "Befor"
+      this.LE = "LE"
     }
     this.getData()
     this.getCategoris()
