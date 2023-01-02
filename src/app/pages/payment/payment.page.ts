@@ -48,7 +48,7 @@ export class PaymentPage implements OnInit {
     this.branchName = localStorage.getItem("BranchName")
     let objofPrint = JSON.parse(sessionStorage.getItem('finalObjOfPrint'))
     console.log(objofPrint)
-    this.http.get('/assets/images/Asset 7 - black.png', { responseType: 'blob' })
+    this.http.get('/assets/images/bingoP.jpeg', { responseType: 'blob' })
       .subscribe(res => {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -310,6 +310,10 @@ export class PaymentPage implements OnInit {
     }, function (error) {
       console.error('Ups, we cant list the printers!', error);
     });
+  }
+
+  printByweb(){
+   window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
   }
 
 

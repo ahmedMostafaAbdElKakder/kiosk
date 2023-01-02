@@ -58,6 +58,12 @@ ion-spinner {
 
 
 @media print {
+    .ng-hide {
+      display: block !important;
+    }
+ }
+ 
+@media print {
   .page, .page-content, html, body, .framework7-root, .views, .view {
       height: auto !important;
   }
